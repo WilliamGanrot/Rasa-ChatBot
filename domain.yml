@@ -1,6 +1,3 @@
-session_config:
-  session_expiration_time: 60.0
-  carry_over_slots_to_new_session: true
 intents:
 - greet
 - goodbye
@@ -21,31 +18,24 @@ templates:
   - text: Hey! How are you?
   - text: Yo wazzup!
   - text: howdy
+
   utter_cheer_up:
-  - text: 'Here is something to cheer you up:'
-    image: https://i.imgur.com/nGF1K8f.jpg
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
   utter_did_that_help:
-  - text: Did that help you?
+  - text: "Did that help you?"
+
   utter_happy:
-  - text: Great, carry on!
+  - text: "Great, carry on!"
+
   utter_goodbye:
-  - text: Bye
+  - text: "Bye"
+
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
-  utter_sorry:
-  - text: Sorry
-  utter_cookie:
-  - text: Here is a cookie!
-  utter_hungry:
-  - text: Are you hungry?
-actions:
-- utter_greet
-- action_respond_to_location
-- utter_happy
-- utter_did_that_help
-- utter_cheer_up
-- utter_goodbye
-- utter_iamabot
-- utter_sorry
-- utter_cookie
-- utter_hungry
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+  
