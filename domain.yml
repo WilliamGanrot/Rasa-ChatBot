@@ -33,6 +33,8 @@ templates:
   - text: Sorry
   utter_cookie:
   - text: Here is a cookie!
+  utter_hungry:
+  - text: Are you hungry?
 actions:
 - utter_greet
 - action_respond_to_location
@@ -43,3 +45,4 @@ actions:
 - utter_iamabot
 - utter_sorry
 - utter_cookie
+- utter_hungry
