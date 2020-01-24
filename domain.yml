@@ -10,6 +10,7 @@ intents:
 - mood_unhappy
 - bot_challenge
 - ask_for_directions
+- test
 entities:
 - location
 slots:
@@ -19,6 +20,7 @@ templates:
   utter_greet:
   - text: Hey! How are you?
   - text: Yo wazzup!
+  - text: howdy
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
