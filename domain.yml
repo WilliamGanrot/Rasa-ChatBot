@@ -20,6 +20,8 @@ slots:
 
 
 responses:
+  
+  #General responses
   utter_greet:
     - text: "Hello! I am your assistant! How can I help?"
 
@@ -29,6 +31,7 @@ responses:
   utter_confirm_thank_you_bye:
     - text: "Glad I could help, good bye!"
 
+  #direction_form reponses 
   utter_ask_to_location:
     - text: "What location do you need directions to?"
   utter_ask_from_location:
@@ -41,6 +44,7 @@ responses:
     - text: "All done!"
   utter_give_directions:
     - text: "https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode=bicycling"
+
 
 forms:
   - directions_form
