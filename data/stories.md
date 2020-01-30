@@ -1,45 +1,17 @@
-## happy path
+## happy direction path
 * greet
-  - utter_greet
-* mood_great
-  - utter_happy
+    - utter_greet
+* request_directions
+    - directions_form
+    - form{"name": "directions_from"}
+    - form{"name": null}
+    - utter_give_directions
 
-## cool path
-* greet
-  - utter_greet
-* mood_great
-  - utter_happy
+## happy direction path 2
+* request_directions
+    - utter_greet_and_confirm_help
+    - directions_form
+    - form{"name": "directions_from"}
+    - form{"name": null}
+    - utter_give_directions
 
-
-## cool path 2
-* greet
-  - utter_greet
-* mood_great
-  - utter_happy
-
-
-## sad path 1
-* greet
-  - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
-* affirm
-  - utter_happy
-
-## sad path 2
-* greet
-  - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
-* deny
-  - utter_goodbye
-
-## say goodbye
-* goodbye
-  - utter_goodbye
-
-## bot challenge
-* bot_challenge
-  - utter_iamabot

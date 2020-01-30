@@ -1,39 +1,44 @@
 intents:
-- greet
-- goodbye
-- affirm
-- deny
-- mood_great
-- mood_unhappy
-- bot_challenge
-- ask_for_directions
-- test
+  - request_directions:
+      use_entities: []
+  - greet
+  - goodbye
+  - inform
+
 entities:
-- location
+  - from_location
+  - to_location
+
 slots:
-  location:
-    type: text
-templates:
+  from_location:
+    type: unfeaturized
+    auto_fill: false
+  to_location:
+    type: unfeaturized
+    auto_fill: false
+
+
+responses:
+
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hello! I am your assistant! How can I help?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_greet_and_confirm_help:
+    - text: "Hello! Yes I can help you with that?"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_ask_to_location:
+    - text: "What location do you need directions to?"
+  utter_ask_from_location:
+    - text: "What is your current location?"
+  utter_slots_values:
+    - text: "I am going to run a give you the directions using the following parameters:\n
+             - from_location: {from_location}\n
+             - to_location: {to_location}"
+  utter_submit:
+    - text: "All done!"
+  utter_give_directions:
+    - text: "https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode=bicycling"
 
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
-  
+forms:
+  - directions_form

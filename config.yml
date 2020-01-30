@@ -9,3 +9,5 @@ policies:
   - name: MemoizationPolicy
   - name: KerasPolicy
   - name: MappingPolicy
+  - name: FormPolicy
+  - name: FallbackPolicy
