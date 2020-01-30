@@ -10,12 +10,22 @@ entities:
   - to_location
 
 slots:
+<<<<<<< HEAD
   from_location:
     type: unfeaturized
     auto_fill: false
   to_location:
     type: unfeaturized
     auto_fill: false
+=======
+  location:
+    type: text
+templates:
+  utter_greet:
+  - text: Hey! How are you?
+  - text: Yo wazzup!
+  - text: howdy
+>>>>>>> 363813e3619e0ea02ef9503699f82e3e3e48945b
 
 
 responses:
