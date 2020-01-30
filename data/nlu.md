@@ -28,6 +28,34 @@
 - hey bot!
 - hello friend
 
+## intent:thank_you_bye
+- um thank you good bye
+- okay cool uh good bye thank you
+- okay thank you good bye
+- you rock
+- and thats all thank you and good bye
+- thank you and good bye
+- sorry about my mistakes thank you good bye
+- noise thank you good bye
+- thank you goodbye noise
+- okay thank you goodbye
+- uh thank you good bye
+- thank you goodbye
+- thank you goodbye noise thank you goodbye
+- breath thank you goodbye
+- thank you
+- okay thank you
+- thanks goodbye
+- ah thank you goodbye
+- thank you noise
+- thank you good bye
+- breath thank you very much goodbye
+- thanks
+- noise thank you goodbye
+- unintelligible thank you goodbye
+- uh okay thank you good bye
+- thank you bye
+- um okay thank you good bye
 
 ## intent:request_directions
 - im looking for some directions
@@ -45,7 +73,7 @@
 - what is the direction form [stora torget](from_location) to [karlstads universitet](to_location)
 - what is the fastest way to [skoghalls centrum](to_location) from [hamarö](to_location)
 
-##intent:inform
+## intent:inform
 <!-- Here is the training data when user provide from_location -->
 - my possition is [new york](from_location)
 - from the address [residenstorget 13](from_location), thanks!
@@ -74,4 +102,3 @@
 - [forshaga](to_location)
 - to [kil](to_location) 
 - [värmlands opera](to_location)
-

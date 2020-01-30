@@ -3,6 +3,7 @@ intents:
       use_entities: []
   - greet
   - goodbye
+  - thank_you_bye
   - inform
 
 entities:
@@ -19,13 +20,14 @@ slots:
 
 
 responses:
-
   utter_greet:
     - text: "Hello! I am your assistant! How can I help?"
 
   utter_greet_and_confirm_help:
     - text: "Hello! Yes I can help you with that?"
 
+  utter_confirm_thank_you_bye:
+    - text: "Glad I could help, good bye!"
 
   utter_ask_to_location:
     - text: "What location do you need directions to?"
