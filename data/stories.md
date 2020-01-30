@@ -24,7 +24,6 @@
 
 ## happy direction path 3
 * request_directions
-    - utter_greet_and_confirm_help
     - directions_form
     - form{"name": "directions_from"}
     - form{"name": null}
@@ -32,7 +31,6 @@
 
 ## happy direction path 4
 * request_directions
-    - utter_greet_and_confirm_help
     - directions_form
     - form{"name": "directions_from"}
     - form{"name": null}

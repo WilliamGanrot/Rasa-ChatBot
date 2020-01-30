@@ -66,12 +66,19 @@
 - how do i get to [triogatan 10](to_location)
 - what is the shortest way to [elgiganten](to_location)
 - where is [kantarellvägen 10](to_location)
+- can you give me the directions to [skutberget](to_location)
+- can you provide me the directions to [biblioteket](to_location)
+- can you provide me the directions to [sf bio](to_location)
 - what is the shortest way to [busstationen](to_location) from [duettgatan 7](from_location)
 - how do i get to [kronoparken](to_location) from [rud](from_location), thanks
 - the fastest way between [mediamarkt](from_location) to [ica](to_location)
 - what is the directions from [universitet](from_location) to [canada](to_location) 
 - what is the direction form [stora torget](from_location) to [karlstads universitet](to_location)
 - what is the fastest way to [skoghalls centrum](to_location) from [hamarö](to_location)
+- directions between [karlstads sjukhus](from_location) [ica skoghall](to_location)
+- directions between [örebro centrum](from_location) [rud hammarö](to_location)
+- directions between [kroppkärr](from_location) [faggotgaten 37](to_location)
+
 
 ## intent:inform
 <!-- Here is the training data when user provide from_location -->
@@ -90,11 +97,15 @@
 - my location is [karlstad](from_location)
 - [kils centrum](from_location)
 - [stora troget](from_location)
-
+- [storbritanen](from_location)
+- [värmlands museum](from_location)
+- [älvsgatan 3](from_location)
 
 <!-- Here is the training data when user provide to_location -->
 - i want the directions to [dalarna](to_location)
 - directions to [scandic](to_location)
+- i need to go to [stadshotellet](to_location)
+- i want the directions to [gruvön](to_location)
 - to the adress [drottninggatan 23](to_location)
 - to [oslo](to_location), thanks
 - [berlin](to_location), please
@@ -102,3 +113,8 @@
 - [forshaga](to_location)
 - to [kil](to_location) 
 - [värmlands opera](to_location)
+- [kils centrum](to_location)
+- [stora troget](to_location)
+- [storbritanen](to_location)
+- [värmlands museum](to_location)
+- [älvsgatan 3](to_location)

@@ -1,0 +1,1 @@
+Only extract one entity for each slot, for example the nlu extract both 'go' and 'örebro' as to_location in the string 'i need to go to örebro', it should only extract the one with the highest score.
