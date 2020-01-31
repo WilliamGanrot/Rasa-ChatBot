@@ -5,7 +5,7 @@
     - utter_greet
 * request_directions
     - directions_form
-    - form{"name": "directions_from"}
+    - form{"name": "directions_form"}
     - form{"name": null}
     - utter_give_directions
 
@@ -14,7 +14,7 @@
     - utter_greet
 * request_directions
     - directions_form
-    - form{"name": "directions_from"}
+    - form{"name": "directions_form"}
     - form{"name": null}
     - utter_give_directions
 * thank_you_bye
@@ -25,14 +25,14 @@
 ## happy direction path 3
 * request_directions
     - directions_form
-    - form{"name": "directions_from"}
+    - form{"name": "directions_form"}
     - form{"name": null}
     - utter_give_directions
 
 ## happy direction path 4
 * request_directions
     - directions_form
-    - form{"name": "directions_from"}
+    - form{"name": "directions_form"}
     - form{"name": null}
     - utter_give_directions
 * thank_you_bye
