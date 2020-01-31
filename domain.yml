@@ -5,6 +5,7 @@ intents:
   - goodbye
   - thank_you_bye
   - inform
+  - out_of_scope
 
 entities:
   - from_location
@@ -30,6 +31,9 @@ responses:
 
   utter_confirm_thank_you_bye:
     - text: "Glad I could help, good bye!"
+
+  utter_default:
+    - text: "I didn't get that, can you rephrase it?"
 
   #direction_form reponses 
   utter_ask_to_location:

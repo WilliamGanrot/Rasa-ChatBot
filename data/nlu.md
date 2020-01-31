@@ -104,6 +104,32 @@
 - [storbritanen](from_location)
 - [värmlands museum](from_location)
 - [älvsgatan 3](from_location)
+- [hovlandavägen 4](from_location)
+- [lappland](from_location)
+- [norrköping](from_location)
+- [storgatan 3](from_location)
+- [hornstull](from_location)
+- [färjestads arena](from_location)
+- [kbab campus](from_location)
+- [kronoparket](from_location)
+- i want to leave from [hultsberg](from_location)    
+- i want to leave [sweden](from_location)
+- i must leave [jönköping](from_location)
+- i have to leave [ryssland](from_location)
+- i have to leave [japan](from_location) right away!
+- i'm leaving [mexico](from_location)
+- i want to exit the [netherlands](from_location)
+- we are leaving from [brazil](from_location)
+- i dont want to stay in [rudsvägen 35](from_location)
+- i want to move from [petersburg](from_location)
+- i want to flee [hallsberg](from_location)
+- we want to run from [getingberget](from_location)
+- i want to get directions from [skutberget](from_location)
+- i want to get the way from [uppsala](from_location)
+- the location i'm leaving from is [uppland](from_location)
+
+
+
 
 <!-- Here is the training data when user provide to_location -->
 - i want the directions to [dalarna](to_location)
@@ -122,3 +148,8 @@
 - [storbritanen](to_location)
 - [värmlands museum](to_location)
 - [älvsgatan 3](to_location)
+- [kils centrum](to_location)
+- [centrum](to_location)
+- [london](to_location)
+- [stockholms opera](to_location)
+- [storgatan 3](to_location)

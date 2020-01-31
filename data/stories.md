@@ -38,3 +38,6 @@
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
+## fallback story
+* out_of_scope
+    - action_default_fallback 

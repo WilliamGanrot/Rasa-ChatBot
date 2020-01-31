@@ -19,6 +19,11 @@ class ActionRequestDirections(FormAction):
 
         return ["to_location", "from_location"]
 
+    """
+    def validate_to_location(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Dict[Text, Any]:
+        print("AHAHAH this failed AHAHAH")
+        #dispatcher.utter_message(template="utter_submit")
+    """
 
     def submit(
         self,
@@ -26,8 +31,7 @@ class ActionRequestDirections(FormAction):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict]:
-        
-        
+    
         # utter submit template
         dispatcher.utter_message(template="utter_submit")
         return []
