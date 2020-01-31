@@ -17,7 +17,7 @@ class ActionRequestDirections(FormAction):
     def required_slots(tracker: Tracker) -> List[Text]:
         """A list of required slots that the form has to fill"""
 
-        return ["to_location", "from_location"]
+        return ["to_location", "from_location", "travel_mode"]
 
     """
     def validate_to_location(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Dict[Text, Any]:
@@ -31,7 +31,7 @@ class ActionRequestDirections(FormAction):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict]:
-    
+
         # utter submit template
         dispatcher.utter_message(template="utter_submit")
         return []

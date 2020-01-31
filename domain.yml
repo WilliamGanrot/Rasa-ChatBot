@@ -10,12 +10,16 @@ intents:
 entities:
   - from_location
   - to_location
+  - travel_mode
 
 slots:
   from_location:
     type: unfeaturized
     auto_fill: false
   to_location:
+    type: unfeaturized
+    auto_fill: false
+  travel_mode:
     type: unfeaturized
     auto_fill: false
 
@@ -38,8 +42,13 @@ responses:
   #direction_form reponses 
   utter_ask_to_location:
     - text: "What location do you need directions to?"
+  
   utter_ask_from_location:
     - text: "What is your current location?"
+
+  utter_ask_travel_mode:
+    - text: "How will you be travling?"
+
   utter_slots_values:
     - text: "I am going to run a give you the directions using the following parameters:\n
              - from_location: {from_location}\n

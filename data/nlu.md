@@ -61,7 +61,7 @@
 - im looking for some directions
 - can you provide me some directions
 - i need to go to [statsparken](to_location)
-- i need to go to [lövnäsbryggan](to_location) from [hammarö kyrka](fom_location)
+- i need to go to [lövnäsbryggan](to_location) from [hammarö kyrka](from_location)
 - im looking for directions to [karlstad](to_location)
 - i want the directions to [stora torget](to_location)
 - what is the way to [munkfors](to_location)
@@ -81,6 +81,7 @@
 - directions between [örebro centrum](from_location) [rud hammarö](to_location)
 - directions between [kroppkärr](from_location) [faggotgaten 37](to_location)
 - show me the way between [universitetet](from_location) and [triogatan](to_location)
+
 
 
 
