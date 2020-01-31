@@ -129,9 +129,6 @@
 - i want to get the way from [uppsala](from_location)
 - the location i'm leaving from is [uppland](from_location)
 
-
-
-
 <!-- Here is the training data when user provide to_location -->
 - i want the directions to [dalarna](to_location)
 - directions to [scandic](to_location)
@@ -154,3 +151,7 @@
 - [london](to_location)
 - [stockholms opera](to_location)
 - [storgatan 3](to_location)
+
+<!-- Inform about transportation --->
+- i will [walk]()
+- i will go by [plane]()
