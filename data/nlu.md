@@ -82,6 +82,28 @@
 - directions between [kroppkärr](from_location) [faggotgaten 37](to_location)
 - show me the way between [universitetet](from_location) and [triogatan](to_location)
 
+- i want directions to [berlin](to_location)
+- i want the way to [tokyo stadshus](to_location)
+- i want directions to [prinsvägen 1](to_location) from [karlsgatan 3](from_location)
+- i want the way to [lövnäs brygga](to_loction) from [skoghalls bruk](from_location)
+- i want directions from [stora enso](from_location) to [grums](to_location)
+- i need to get away from [götaland](from_location)
+- i want directions
+- i want to get some directions
+- i need some directions
+- i need some directions to [pizza hut](to_location)
+- i need some directions from [verket](from_directions)
+- i need help to find directions
+- i need help to locate [nöjesfabriken](to_location)
+- please help me find the way to [sundstagymnasiet](to_location)
+- please help me find from [älvkullen](from_location)
+- please find [stc](to_location)
+- find [pizzeria](to_location)
+- find [mit i city](to_location), please
+- find me [embla](to_location)
+- please direct me to [malmö centrum](to_location)
+- direct me to [skåne](to_location)
+- lead me to [halland](to_location), please
 
 
 
