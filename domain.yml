@@ -56,7 +56,7 @@ responses:
   utter_submit:
     - text: "All done!"
   utter_give_directions:
-    - text: "https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode=bicycling"
+    - text: "https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode={travel_mode}"
 
 
 forms:

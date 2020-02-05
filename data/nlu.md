@@ -81,6 +81,8 @@
 - directions between [örebro centrum](from_location) [rud hammarö](to_location)
 - directions between [kroppkärr](from_location) [faggotgaten 37](to_location)
 - show me the way between [universitetet](from_location) and [triogatan](to_location)
+- can you show me to way to[eriksberg](to_location) from [skattkammaren](from_location)
+
 
 - i want directions to [berlin](to_location)
 - i want the way to [tokyo stadshus](to_location)
@@ -150,6 +152,7 @@
 - i want to get directions from [skutberget](from_location)
 - i want to get the way from [uppsala](from_location)
 - the location i'm leaving from is [uppland](from_location)
+- im in [eriksberg](from_location)
 
 <!-- Here is the training data when user provide to_location -->
 - i want the directions to [dalarna](to_location)
@@ -175,5 +178,13 @@
 - [storgatan 3](to_location)
 
 <!-- Inform about transportation --->
-- i will [walk]()
-- i will go by [plane]()
+- i will [walk](travel_mode)
+- i will go by [plane](travel_mode)
+- i'm gonna [drive](travel_mode)
+- travel by [train](travel_mode)
+- i will [bicycle](travel_mode)
+- we will travel with [buss](travel_mode)
+- by [taxi](travel_mode)
+- with [car](travel_mode)
+- with an [air plane](travel_mode)
+- by a [motorcycle](travel_mode)
