@@ -109,8 +109,12 @@
 - lead me to [halland](to_location), please
 
 
+# intent:inform_general
+- i want to travel from [göteborg](form_location) with [train](travel_mode)
+- how do i get from [uppsala](from_location) to [stockholm](to_location) with [car](travel_mode)
+- how can i [drive](travel_mode) to [karntarellvägen 23](to_location)
 
-## intent:inform
+## intent:inform_from_location
 <!-- Here is the training data when user provide from_location -->
 - my possition is [new york](from_location)
 - from the address [residenstorget 13](from_location), thanks!
@@ -156,6 +160,7 @@
 - im in [eriksberg](from_location)
 
 <!-- Here is the training data when user provide to_location -->
+## intent:inform_to_location
 - i want the directions to [dalarna](to_location)
 - directions to [scandic](to_location)
 - i need to go to [stadshotellet](to_location)
@@ -178,7 +183,7 @@
 - [stockholms opera](to_location)
 - [storgatan 3](to_location)
 
-<!-- Inform about transportation --->
+## intent:inform_travel_mode
 - i will [walk](travel_mode)
 - i will go by [plane](travel_mode)
 - i'm gonna [drive](travel_mode)
@@ -188,4 +193,6 @@
 - by [taxi](travel_mode)
 - with [car](travel_mode)
 - with an [air plane](travel_mode)
-- by a [motorcycle](travel_mode)
+- by a [motorcycle](travel_mode) 
+
+

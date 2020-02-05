@@ -1,22 +1,19 @@
-session_config:
-  session_expiration_time: 0.0
-  carry_over_slots_to_new_session: true
-
-  intents:
-- request_directions:
-    use_entities: []
-- greet
-- goodbye
-- thank_you_bye
-- inform
-- out_of_scope
+intents:
+  - request_directions:
+      use_entities: []
+  - greet
+  - goodbye
+  - thank_you_bye
+  - inform_general
+  - inform_travel_mode
+  - inform_from_location
+  - inform_to_location
+  - out_of_scope
 
 entities:
-- from_location
-- to_location
-- travel_mode
-- from_directions
-- to_loction
+  - from_location
+  - to_location
+  - travel_mode
 
 slots:
   from_location:
@@ -28,41 +25,42 @@ slots:
   travel_mode:
     type: unfeaturized
     auto_fill: false
-    
-responses:
-  utter_greet:
-  - text: Hello! I am your assistant! How can I help?
-  utter_greet_and_confirm_help:
-  - text: Hello! Yes I can help you with that?
-  utter_confirm_thank_you_bye:
-  - text: Glad I could help, good bye!
-  utter_default:
-  - text: I didn't get that, can you rephrase it?
-  utter_ask_to_location:
-  - text: What location do you need directions to?
-  utter_ask_from_location:
-  - text: What is your current location?
-  utter_ask_travel_mode:
-  - text: How will you be travling?
-  utter_slots_values:
-  - text: "I am going to run a give you the directions using the following parameters:\n\
-      \ - from_location: {from_location}\n - to_location: {to_location}"
-  utter_submit:
-  - text: All done!
-  utter_give_directions:
-  - text: https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode={travel_mode}
 
-  actions:
-- utter_greet
-- utter_greet_and_confirm_help
-- utter_confirm_thank_you_bye
-- utter_default
-- utter_ask_to_location
-- utter_ask_from_location
-- utter_ask_travel_mode
-- utter_slots_values
-- utter_submit
-- utter_give_directions
+
+responses:
+  
+  #General responses
+  utter_greet:
+    - text: "Hello! I am your assistant! How can I help?"
+
+  utter_greet_and_confirm_help:
+    - text: "Hello! Yes I can help you with that?"
+
+  utter_confirm_thank_you_bye:
+    - text: "Glad I could help, good bye!"
+
+  utter_default:
+    - text: "I didn't get that, can you rephrase it?"
+
+  #direction_form reponses 
+  utter_ask_to_location:
+    - text: "What location do you need directions to?"
+  
+  utter_ask_from_location:
+    - text: "What is your current location?"
+
+  utter_ask_travel_mode:
+    - text: "How will you be travling?"
+
+  utter_slots_values:
+    - text: "I am going to run a give you the directions using the following parameters:\n
+             - from_location: {from_location}\n
+             - to_location: {to_location}"
+  utter_submit:
+    - text: "All done!"
+  utter_give_directions:
+    - text: "https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode={travel_mode}"
+
 
 forms:
-- directions_form
+  - directions_form
