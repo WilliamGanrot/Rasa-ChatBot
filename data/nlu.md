@@ -81,7 +81,8 @@
 - directions between [örebro centrum](from_location) [rud hammarö](to_location)
 - directions between [kroppkärr](from_location) [faggotgaten 37](to_location)
 - show me the way between [universitetet](from_location) and [triogatan](to_location)
-- can you show me to way to[eriksberg](to_location) from [skattkammaren](from_location)
+- can you show me to way to [eriksberg](to_location) from [skattkammaren](from_location)
+- can you show me to [löfbergsskrapan](to_location) from [stadshuset](from_location)
 
 
 - i want directions to [berlin](to_location)
