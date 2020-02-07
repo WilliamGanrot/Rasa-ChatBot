@@ -15,6 +15,7 @@ entities:
   - to_location
   - travel_mode
 
+
 slots:
   from_location:
     type: unfeaturized
@@ -25,6 +26,7 @@ slots:
   travel_mode:
     type: unfeaturized
     auto_fill: false
+
 
 
 responses:

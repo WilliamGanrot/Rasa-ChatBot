@@ -113,6 +113,11 @@
 - i want to travel from [göteborg](form_location) with [train](travel_mode)
 - how do i get from [uppsala](from_location) to [stockholm](to_location) with [car](travel_mode)
 - how can i [drive](travel_mode) to [karntarellvägen 23](to_location)
+- we want to [drive](travel_mode) to [Karlstads universitet](to_location)
+- can i take the [train](travel_mode) from [göteborg](form_location)
+- i will [walk](travel_mode) to [bärstadsbryggan](to_location)
+- i want directions to [kroppkär](to_location) from [centrum](from_location) and i will be [walking](travel_mode)  
+- how do i get from [mars](from_location) to [jupiter](to_location)
 
 ## intent:inform_from_location
 <!-- Here is the training data when user provide from_location -->
@@ -184,15 +189,48 @@
 - [storgatan 3](to_location)
 
 ## intent:inform_travel_mode
-- i will [walk](travel_mode)
-- i will go by [plane](travel_mode)
-- i'm gonna [drive](travel_mode)
-- travel by [train](travel_mode)
-- i will [bicycle](travel_mode)
-- we will travel with [buss](travel_mode)
-- by [taxi](travel_mode)
-- with [car](travel_mode)
-- with an [air plane](travel_mode)
-- by a [motorcycle](travel_mode) 
+- i will [walk](travel_mode:walking)
+- i'm gonna [drive](travel_mode:driving)
+- by [taxi](travel_mode:driving)
+- with [car](travel_mode:driving)
+- with a [truck](travel_mode:driving)
+- by a [motorcycle](travel_mode:driving) 
+- i will go by the [sub way](travel_mode:transit)
+- we will travel with [buss](travel_mode:transit)
+- travel by [train](travel_mode:transit)
+- i will [bicycle](travel_mode:bicycling)
 
+## synonym:walking
+ - walk
+ - foot
+ - walking
+ - run
+ - stroll
+ - hike
+ - jogg
+
+## synonym:driving
+ - drive
+ - car
+ - truck
+ - taxi
+ - automobile
+ - cab
+ - driving
+ - uber
+
+
+## synonym:transit
+ - buss
+ - train
+ - subway
+ - sub
+ - railways
+ - transit
+
+## synonym:bicycling
+ - bike
+ - biking
+ - bicycle
+ - ride
 

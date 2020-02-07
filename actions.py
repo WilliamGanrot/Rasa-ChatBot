@@ -21,7 +21,7 @@ class ActionRequestDirections(FormAction):
         return ["to_location", "from_location", "travel_mode"]
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
-
+        """
 
         travel_mode = "driving" #Default travel_mode
         highest_score = 0
@@ -59,3 +59,7 @@ class ActionRequestDirections(FormAction):
         # utter submit template
         dispatcher.utter_message(template="utter_submit")
         return [SlotSet("travel_mode", travel_mode)]
+        """
+        dispatcher.utter_message(template="utter_submit")
+        return []
+
