@@ -219,7 +219,6 @@
  - driving
  - uber
 
-
 ## synonym:transit
  - bus
  - train
@@ -234,3 +233,17 @@
  - bicycle
  - ride
 
+## intent_book_vacation
+- i want to book my vacation
+- i need to book a vacation
+- i want to book a vacation from [july 7](from_date) to [august 11](to_date)
+- i am going to book my vacation from [march 3](from_date) to [april 7](to_date)
+- i will travel between [may 15](from_date) to [june 8](to_date)
+- i am going away on a vacation on [september 2](from_date)
+- i will be away until [october 1](to_date)
+- will travel until [november 15](to_date)
+- need a vacation from [december 11](from_date)
+- need a vacation to [february 27](to_date)
+- i'm going away for a long time
+- i'm flying to mallorca on [january 16](from_date) so i need to book my vacation
+- i'm going to gran canaria on [march 28](from_date) and i will need to book my vacation
