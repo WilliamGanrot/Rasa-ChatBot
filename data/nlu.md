@@ -233,7 +233,7 @@
  - bicycle
  - ride
 
-## intent_book_vacation
+## intent:book_vacation
 - i want to book my vacation
 - i need to book a vacation
 - i want to book a vacation from [july 7](from_date) to [august 11](to_date)
