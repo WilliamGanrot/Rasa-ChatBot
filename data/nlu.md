@@ -1,13 +1,13 @@
 ## intent:greet
-- Hi
-- Hey
-- Hi bot
-- Hey bot
-- Hello
-- Good morning
+- hi
+- hey
+- hi bot
+- hey bot
+- hello
+- good morning
 - hi again
 - hi folks
-- hi Mister
+- hi mister
 - hi pal!
 - hi there
 - greetings
@@ -60,7 +60,7 @@
 ## intent:request_directions
 - im looking for some directions
 - can you provide me some directions
-- i need to go to [statsparken](to_location)
+- i need to go to [stadsparken](to_location)
 - i need to go to [lövnäsbryggan](to_location) from [hammarö kyrka](from_location)
 - im looking for directions to [karlstad](to_location)
 - i want the directions to [stora torget](to_location)
@@ -84,7 +84,6 @@
 - can you show me to way to [eriksberg](to_location) from [skattkammaren](from_location)
 - can you show me to [löfbergsskrapan](to_location) from [stadshuset](from_location)
 
-
 - i want directions to [berlin](to_location)
 - i want the way to [tokyo stadshus](to_location)
 - i want directions to [prinsvägen 1](to_location) from [karlsgatan 3](from_location)
@@ -102,7 +101,7 @@
 - please help me find from [älvkullen](from_location)
 - please find [stc](to_location)
 - find [pizzeria](to_location)
-- find [mit i city](to_location), please
+- find [mitt i city](to_location), please
 - find me [embla](to_location)
 - please direct me to [malmö centrum](to_location)
 - direct me to [skåne](to_location)
@@ -113,7 +112,7 @@
 - i want to travel from [göteborg](form_location) with [train](travel_mode)
 - how do i get from [uppsala](from_location) to [stockholm](to_location) with [car](travel_mode)
 - how can i [drive](travel_mode) to [karntarellvägen 23](to_location)
-- we want to [drive](travel_mode) to [Karlstads universitet](to_location)
+- we want to [drive](travel_mode) to [karlstads universitet](to_location)
 - can i take the [train](travel_mode) from [göteborg](form_location)
 - i will [walk](travel_mode) to [bärstadsbryggan](to_location)
 - i want directions to [kroppkär](to_location) from [centrum](from_location) and i will be [walking](travel_mode)  
@@ -124,7 +123,7 @@
 - my possition is [new york](from_location)
 - from the address [residenstorget 13](from_location), thanks!
 - [england](from_location)
-- i would like directions from [cansas city](from_location)
+- i would like directions from [kansas city](from_location)
 - i want the directions from [coop kronoparken](from_location)
 - from [tynäs](from_location)
 - [hammarö](from_location), thank you
@@ -146,7 +145,7 @@
 - [hornstull](from_location)
 - [färjestads arena](from_location)
 - [kbab campus](from_location)
-- [kronoparket](from_location)
+- [kronoparken](from_location)
 - i want to leave from [hultsberg](from_location)    
 - i want to leave [sweden](from_location)
 - i must leave [jönköping](from_location)
@@ -196,7 +195,7 @@
 - with a [truck](travel_mode:driving)
 - by a [motorcycle](travel_mode:driving) 
 - i will go by the [sub way](travel_mode:transit)
-- we will travel with [buss](travel_mode:transit)
+- we will travel with [bus](travel_mode:transit)
 - travel by [train](travel_mode:transit)
 - i will [bicycle](travel_mode:bicycling)
 
@@ -207,7 +206,8 @@
  - run
  - stroll
  - hike
- - jogg
+ - jog
+ - jogging
 
 ## synonym:driving
  - drive
@@ -219,9 +219,8 @@
  - driving
  - uber
 
-
 ## synonym:transit
- - buss
+ - bus
  - train
  - subway
  - sub
@@ -233,8 +232,6 @@
  - biking
  - bicycle
  - ride
-
-
 
 ## intent:request_vacation
   - i want a vacation
@@ -248,3 +245,16 @@
   - how do i book a vacation
   - i need some time of
   - can i take some time of
+  - i want to book my vacation
+ - i need to book a vacation
+ - i want to book a vacation from [july 7](minDate) to [august 11](maxDate)
+ - i am going to book my vacation from [march 3](minDate) to [april 7](maxDate)
+ - i will travel between [may 15](minDate) to [june 8](maxDate)
+ - i am going away on a vacation on [september 2](minDate)
+ - i will be away until [october 1](maxDate)
+ - will travel until [november 15](maxDate)
+ - need a vacation from [december 11](minDate)
+ - need a vacation to [february 27](maxDate)
+ - i'm going away for a long time
+ - i'm flying to mallorca on [january 16](minDate) so i need to book my vacation
+ - i'm going to gran canaria on [march 28](minDate) and i will need to book my vacation
