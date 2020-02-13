@@ -38,6 +38,21 @@
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
+
+
+
+
+
+## happy vacation path
+* request_vacation
+    - vacation_form
+    - form{"name": "vacation_form"}
+    - form{"name": null}
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+
 ## fallback story
 * out_of_scope
     - action_default_fallback 
+

@@ -234,3 +234,17 @@
  - bicycle
  - ride
 
+
+
+## intent:request_vacation
+  - i want a vacation
+  - i really need a vacation
+  - can i take a vacation
+  - i will be going away for a while
+  - i'm planning on to travel
+  - my family and i want to travel
+  - can i take a week of
+  - i need to take a few days of
+  - how do i book a vacation
+  - i need some time of
+  - can i take some time of

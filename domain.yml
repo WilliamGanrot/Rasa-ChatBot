@@ -1,6 +1,8 @@
 intents:
   - request_directions:
       use_entities: []
+  - request_vacation:
+      use_entities: []
   - greet
   - goodbye
   - thank_you_bye
@@ -10,11 +12,17 @@ intents:
   - inform_to_location
   - out_of_scope
 
+
+
+
+
 entities:
   - from_location
   - to_location
   - travel_mode
 
+  - minDate
+  - maxDate
 
 slots:
   from_location:
@@ -26,6 +34,29 @@ slots:
   travel_mode:
     type: unfeaturized
     auto_fill: false
+  minDate:
+    type: unfeaturized
+    auto_fill: false
+  maxDate:
+    type: unfeaturized
+    auto_fill: false
+
+
+
+actions:
+- utter_greet
+- utter_greet_and_confirm_help
+- utter_confirm_thank_you_bye
+- utter_default
+- utter_ask_to_location
+- utter_ask_from_location
+- utter_ask_travel_mode
+- utter_slots_values
+- utter_submit
+- utter_ask_minDate
+- utter_ask_maxDate
+- ActionRequestVacation
+
 
 
 
@@ -64,5 +95,12 @@ responses:
     - text: "https://www.google.com/maps/dir/?api=1&origin={from_location}&destination={to_location}&travelmode={travel_mode}"
 
 
+  utter_ask_minDate:
+    - text: "When will you be leaving?"
+
+  utter_ask_maxDate:
+    - text: "When will you get back?"
+
 forms:
   - directions_form
+  - vacation_form
