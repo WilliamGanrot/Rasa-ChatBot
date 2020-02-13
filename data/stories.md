@@ -38,19 +38,29 @@
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
-
-
-
-
-
+<!-- With Hello --->
+	
 ## happy vacation path
+* greet
+    - utter_greet
 * request_vacation
     - vacation_form
-    - form{"name": "vacation_form"}
-    - form{"name": null}
+	- form{"name": "vacation_form"}
+	- form{"name": null}
+	<!-- TODO: utter confirm vacation --->
 * thank_you_bye
     - utter_confirm_thank_you_bye
+	
+<!-- No Hello --->
 
+## happy vacation path 2
+* request_vacation
+    - vacation_form
+	- form{"name": "vacation_form"}
+	- form{"name": null}
+	<!-- TODO: utter confirm vacation --->
+* thank_you_bye
+    - utter_confirm_thank_you_bye
 
 ## fallback story
 * out_of_scope
