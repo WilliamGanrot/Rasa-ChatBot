@@ -258,3 +258,22 @@
  - i'm going away for a long time
  - i'm flying to mallorca on [january 16](minDate) so i need to book my vacation
  - i'm going to gran canaria on [march 28](minDate) and i will need to book my vacation
+
+## intent:inform_leaving_date
+  - i will leave the [5th](minDate)
+  - i travel on [saturday](minDate)
+  - we are leaving [feburary the 4th](minDate)
+  - we are going on [02/03/2020](minDate)
+  - i will fly [in two weeks](minDate) 
+
+## intent:inform_return_date
+  - i will be back the [6th](maxDate)
+  - we arrive the [2nd march](maxDate)
+  - i'm back in [two weeks](maxDate)
+  - i'm comming home the [01/04/2021](maxDate)
+
+## intent:test_duckling
+- the date is [tomorrow](time)
+- i will leave [in two weeks](time)
+- i'm traveling on [monday](time)
+- i am leaving the [25th](time)

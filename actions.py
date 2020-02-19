@@ -68,22 +68,15 @@ class ActionRequestVacation(FormAction):
 
     def name(self) -> Text:
         return "vacation_form"
-    
+
+
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
         """A list of required slots that the form has to fill"""
 
         return ["minDate", "maxDate"]
 
-    def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict]:
-        """Define what the form has to do
-            after all required slots are filled"""
+    def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 
-        # utter submit template
         dispatcher.utter_message(template="utter_submit")
         return []

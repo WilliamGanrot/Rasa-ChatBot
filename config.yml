@@ -1,5 +1,20 @@
 language: en
-pipeline: supervised_embeddings
+pipeline: 
+  #Default supervised_embelding
+  - name: "WhitespaceTokenizer"
+  - name: "CRFEntityExtractor"
+  - name: "EntitySynonymMapper"
+  - name: "CountVectorsFeaturizer"
+  - name: "EmbeddingIntentClassifier"
+  
+  #Duckling
+  - name: DucklingHTTPExtractor
+    url: http://localhost:8000
+    dimensions:
+      - time     
+      - minDate
+      - maxDate
+
 policies:
 - name: MemoizationPolicy
 - name: KerasPolicy

@@ -11,6 +11,9 @@ intents:
   - inform_from_location
   - inform_to_location
   - out_of_scope
+  - test_duckling
+  - inform_leaving_date
+  - inform_return_date
 
 
 
@@ -21,8 +24,6 @@ entities:
   - to_location
   - travel_mode
 
-  - minDate
-  - maxDate
 
 slots:
   from_location:
@@ -33,34 +34,38 @@ slots:
     auto_fill: false
   travel_mode:
     type: unfeaturized
-    auto_fill: false
   minDate:
     type: unfeaturized
-    auto_fill: false
   maxDate:
     type: unfeaturized
     auto_fill: false
 
+  time:
+    type: unfeaturized
+
 
 
 actions:
-- utter_greet
-- utter_greet_and_confirm_help
-- utter_confirm_thank_you_bye
-- utter_default
-- utter_ask_to_location
-- utter_ask_from_location
-- utter_ask_travel_mode
-- utter_slots_values
-- utter_submit
-- utter_ask_minDate
-- utter_ask_maxDate
-- ActionRequestVacation
+  - utter_greet
+  - utter_greet_and_confirm_help
+  - utter_confirm_thank_you_bye
+  - utter_default
+  - utter_ask_to_location
+  - utter_ask_from_location
+  - utter_ask_travel_mode
+  - utter_slots_values
+  - utter_submit
+  - utter_ask_minDate
+  - utter_ask_maxDate
+  - utter_give_directions
+  - utter_confirm_time
+  - utter_date_values
 
 
 
 
-responses:
+
+templates:
   
   #General responses
   utter_greet:
@@ -100,7 +105,16 @@ responses:
 
   utter_ask_maxDate:
     - text: "When will you get back?"
+  
+  utter_confirm_time:
+    - text: "the date is: {time}"
 
+
+  utter_date_values:
+    - text: "The form parameters are:\n
+             - minDate: {minDate}\n
+             - maxDate: {maxDate}"
 forms:
   - directions_form
   - vacation_form
+
