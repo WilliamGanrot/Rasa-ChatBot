@@ -56,9 +56,3 @@
 ## fallback story
 * out_of_scope
     - action_default_fallback 
-
-
-
-## test duckling
- * test_duckling
-    - utter_confirm_time

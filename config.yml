@@ -10,8 +10,7 @@ pipeline:
   #Duckling
   - name: DucklingHTTPExtractor
     url: http://localhost:8000
-    dimensions:
-      - time     
+    dimensions:    
       - minDate
       - maxDate
 

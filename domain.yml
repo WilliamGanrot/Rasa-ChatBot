@@ -24,7 +24,6 @@ entities:
   - to_location
   - travel_mode
 
-
 slots:
   from_location:
     type: unfeaturized
@@ -38,11 +37,6 @@ slots:
     type: unfeaturized
   maxDate:
     type: unfeaturized
-    auto_fill: false
-
-  time:
-    type: unfeaturized
-
 
 
 actions:
@@ -58,7 +52,6 @@ actions:
   - utter_ask_minDate
   - utter_ask_maxDate
   - utter_give_directions
-  - utter_confirm_time
   - utter_date_values
 
 
@@ -105,9 +98,7 @@ templates:
 
   utter_ask_maxDate:
     - text: "When will you get back?"
-  
-  utter_confirm_time:
-    - text: "the date is: {time}"
+
 
 
   utter_date_values:
