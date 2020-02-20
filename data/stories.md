@@ -45,9 +45,9 @@
     - utter_greet
 * request_vacation
     - vacation_form
-	- form{"name": "vacation_form"}
-	- form{"name": null}
-	- utter_date_values
+    - form{"name": "vacation_form"}
+    - form{"name": null}
+    - utter_date_values
 * thank_you_bye
     - utter_confirm_thank_you_bye
 	
@@ -56,9 +56,9 @@
 ## happy vacation path 2
 * request_vacation
     - vacation_form
-	- form{"name": "vacation_form"}
-	- form{"name": null}
-	- utter_date_values
+    - form{"name": "vacation_form"}
+    - form{"name": null}
+    - utter_date_values
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
