@@ -278,7 +278,7 @@
   - i will be back the [6th](maxDate)
   - we arrive the [2nd march](maxDate)
   - i'm back in [two weeks](maxDate)
-  - i'm comming home the [01/04/2021](maxDate)
+  - i'm coming home the [01/04/2021](maxDate)
   - i will be back to work on [friday](maxDate)
   - i am back the [4th](maxDate)
   - i am back on [monday](maxDate)
