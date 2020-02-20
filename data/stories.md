@@ -47,7 +47,7 @@
     - vacation_form
 	- form{"name": "vacation_form"}
 	- form{"name": null}
-	<!-- TODO: utter confirm vacation --->
+	- utter_date_values
 * thank_you_bye
     - utter_confirm_thank_you_bye
 	
@@ -58,7 +58,7 @@
     - vacation_form
 	- form{"name": "vacation_form"}
 	- form{"name": null}
-	<!-- TODO: utter confirm vacation --->
+	- utter_date_values
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
