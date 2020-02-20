@@ -273,6 +273,11 @@
   - i need to go on [saturday](minDate)
   - i am leaving on [friday](minDate)
   - i have to leave on [in three days](minDate)
+  - i leave on [satuday](minDate)
+  - leaving on [monday](minDate)
+  - i am going the [3rd march](minDate)
+  - i leave at [friday](minDate)
+  - i go on [1st february](minDate) 
 
 ## intent:inform_return_date
   - i will be back the [6th](maxDate)
@@ -286,4 +291,8 @@
   - will be back on [thursday](maxDate)
   - i will be back on [christmas](maxDate)
   - i will get back to work on [monday](maxDate)
+  - i am back on [wensday](maxDate)
+  - i will be back on [4th of july](maxDate)
+  - will return in [a month](maxDate)
+  - i will return on [christmas](maxDate)
 

@@ -33,47 +33,10 @@ class ActionRequestDirections(FormAction):
         return ["to_location", "from_location", "travel_mode"]
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
-        """
 
-        travel_mode = "driving" #Default travel_mode
-        highest_score = 0
-
-        modes =	{
-            "bicycling": "bicycling",
-            "bicycle": "bicycling",
-            "bike": "bicycling",
-            "biking": "bicycling",
-            "car": "driving",
-            "drive": "driving",
-            "driving": "driving",
-            "taxi": "driving",
-            "walk": "walking",
-            "walking": "walking",
-            "foot": "walking",
-            "transit": "transit",
-            "buss": "transit",
-            "train": "transit",
-            "subway": "transit",
-            "public trainsportation": "transit"
-        }
-
-        for x in modes:
-            temp_score = SequenceMatcher(None, x, tracker.get_slot("travel_mode")).ratio()
-            
-
-            if temp_score > highest_score:
-                highest_score = temp_score
-                travel_mode = modes[x]
-
-
-
-
-        # utter submit template
-        dispatcher.utter_message(template="utter_submit")
-        return [SlotSet("travel_mode", travel_mode)]
-        """
         dispatcher.utter_message(template="utter_submit")
         return []
+
 
 class ActionRequestVacation(FormAction):
     """Example of a custom form action"""
@@ -114,11 +77,10 @@ class ActionRequestVacation(FormAction):
         return {
             'maxDate': tracker.get_slot("time")
         }
-
-
-
+        
     def format(self, d):
         return d.isoformat('T')
+
 
     def not_allowed_dates(self):
         return [datetime(2020, 2, 12, 0, 0),
@@ -131,7 +93,10 @@ class ActionRequestVacation(FormAction):
         between_dates = [minTime + timedelta(days=i) for i in range(delta.days + 1)]
         return between_dates
 
-    def is_date_range_valid(self, not_allowed_dates, between_dates):
+    """
+    This does not work!!
+    """
+    def is_date_range_valid(self, not_allowed_dates, between_dates): 
         
         #if the date is allowed, check if any intersects in the not_allowed_dates() list and the dates between minTime and maxTime
         if not any(x in not_allowed_dates for x in between_dates):
@@ -156,6 +121,7 @@ class ActionRequestVacation(FormAction):
 
         result = service.events().insert(calendarId='primary', body=event).execute()
         print('Event created: %s' % (result.get('htmlLink')))
+        return result
 
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
@@ -192,13 +158,15 @@ class ActionRequestVacation(FormAction):
         delta = parsedMaxDate - parsedMinDate
         between_dates = [parsedMinDate + timedelta(days=i) for i in range(delta.days + 1)]
 
-        d= self.not_allowed_dates()
+        msg = None
         #if the date is allowed, check if
-        if self.is_date_range_valid(d, self.get_between_dates(parsedMaxDate, parsedMinDate)):
+        if self.is_date_range_valid(self.not_allowed_dates(), self.get_between_dates(parsedMaxDate, parsedMinDate)):
             print("You can travel")
-            self.create_event(service, minDate, maxDate)
+            result = self.create_event(service, minDate, maxDate)
+            msg = "The event has been added to you calender.\nYou can view it here: " + (result.get('htmlLink'))
         else:
             print("you can not travel")
+            msg = "You can not travel"
 
-        dispatcher.utter_message(template="utter_submit")
+        dispatcher.utter_message(msg)
         return []
