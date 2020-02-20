@@ -13,9 +13,8 @@ pipeline:
     locale: en_GB
     timezone: Europe/Stockholm
     dimensions:    
-      - minDate
-      - maxDate
-
+      - time
+      
 policies:
 - name: MemoizationPolicy
 - name: KerasPolicy

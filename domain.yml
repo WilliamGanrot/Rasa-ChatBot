@@ -23,6 +23,8 @@ entities:
   - from_location
   - to_location
   - travel_mode
+  - minDate
+  - maxDate
 
 slots:
   from_location:
@@ -36,6 +38,8 @@ slots:
   minDate:
     type: unfeaturized
   maxDate:
+    type: unfeaturized
+  time:
     type: unfeaturized
 
 
