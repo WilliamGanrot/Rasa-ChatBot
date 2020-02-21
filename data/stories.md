@@ -59,8 +59,30 @@
     - form{"name": "vacation_form"}
     - form{"name": null}
     - utter_date_values
+    - check_if_valid_dates
+    - slot{"is_valid_dates": true}
+    - utter_xx
 * thank_you_bye
     - utter_confirm_thank_you_bye
+
+
+## happy vacation path 2
+* request_vacation
+    - vacation_form
+    - form{"name": "vacation_form"}
+    - form{"name": null}
+    - utter_date_values
+    - check_if_valid_dates
+    - slot{"is_valid_dates": false}
+    - utter_yy
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+
+
+
+
+
 
 ## fallback story
 * out_of_scope

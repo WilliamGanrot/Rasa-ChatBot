@@ -26,6 +26,8 @@ entities:
   - minDate
   - maxDate
 
+  - is_valid_dates
+
 slots:
   from_location:
     type: unfeaturized
@@ -41,7 +43,9 @@ slots:
     type: unfeaturized
   time:
     type: unfeaturized
-
+  
+  is_valid_dates:
+    type: bool
 
 actions:
   - utter_greet
@@ -57,6 +61,10 @@ actions:
   - utter_ask_maxDate
   - utter_give_directions
   - utter_date_values
+  - utter_ask_add_to_calender
+  - check_if_valid_dates
+  - utter_xx
+  - utter_yy
 
 
 
@@ -102,6 +110,9 @@ templates:
 
   utter_ask_maxDate:
     - text: "When will you get back?"
+  
+  utter_ask_add_to_calender:
+    - text: "Do you wish to add the event to your calender?"
 
 
 
@@ -109,6 +120,11 @@ templates:
     - text: "The form parameters are:\n
              - minDate: {minDate}\n
              - maxDate: {maxDate}"
+
+  utter_xx:
+    - text: "xx"
+  utter_yy:
+    - text: "yy"
 forms:
   - directions_form
   - vacation_form
