@@ -60,8 +60,10 @@
     - form{"name": null}
     - utter_date_values
     - check_if_valid_dates
-    - slot{"is_valid_dates": true}
-    - utter_xx
+        - slot{"is_valid_dates": true}
+            - utter_ask_add_to_calender
+                * affirm
+                    - book_in_calender
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
@@ -73,15 +75,26 @@
     - form{"name": null}
     - utter_date_values
     - check_if_valid_dates
-    - slot{"is_valid_dates": false}
-    - utter_yy
+        - slot{"is_valid_dates": true}
+            - utter_ask_add_to_calender
+                * deny
+                    - utter_confirm_thank_you_bye
 * thank_you_bye
     - utter_confirm_thank_you_bye
 
 
 
-
-
+## happy vacation path 2
+* request_vacation
+    - vacation_form
+    - form{"name": "vacation_form"}
+    - form{"name": null}
+    - utter_date_values
+    - check_if_valid_dates
+        - slot{"is_valid_dates": false}
+            - utter_not_valid_dates
+* thank_you_bye
+    - utter_confirm_thank_you_bye
 
 
 ## fallback story

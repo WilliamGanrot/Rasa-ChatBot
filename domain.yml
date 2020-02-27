@@ -14,6 +14,8 @@ intents:
   - test_duckling
   - inform_leaving_date
   - inform_return_date
+  - affirm
+  - deny
 
 
 
@@ -63,9 +65,8 @@ actions:
   - utter_date_values
   - utter_ask_add_to_calender
   - check_if_valid_dates
-  - utter_xx
-  - utter_yy
-
+  - utter_not_valid_dates
+  - book_in_calender
 
 
 
@@ -111,20 +112,18 @@ templates:
   utter_ask_maxDate:
     - text: "When will you get back?"
   
-  utter_ask_add_to_calender:
-    - text: "Do you wish to add the event to your calender?"
-
-
-
   utter_date_values:
     - text: "The form parameters are:\n
              - minDate: {minDate}\n
              - maxDate: {maxDate}"
 
-  utter_xx:
-    - text: "xx"
-  utter_yy:
-    - text: "yy"
+  utter_not_valid_dates:
+    - text: "Unfortunately you can't have vacation these dates!"
+
+  utter_ask_add_to_calender:
+    - text: "Okay, do you wish to add the event to your calender?"
+
+
 forms:
   - directions_form
   - vacation_form
