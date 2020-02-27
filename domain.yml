@@ -75,7 +75,8 @@ templates:
   
   #General responses
   utter_greet:
-    - text: "Hello! I am your assistant! How can I help?"
+    - text: "Hello! I am an assistant that can help with directions and to book your vacation.\n
+             How can I help you?"
 
   utter_greet_and_confirm_help:
     - text: "Hello! Yes I can help you with that?"
