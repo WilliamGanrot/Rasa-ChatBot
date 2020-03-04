@@ -9,7 +9,7 @@ from rasa_sdk.events import SlotSet
 from difflib import SequenceMatcher
 
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from dateutil.parser import parse
 import pickle
 from dateutil.parser import parse
@@ -78,24 +78,25 @@ class ActionRequestVacation(FormAction):
         
         # Validate the time slots
         if type(tracker.get_slot("time")) is dict:
-            print("both dates provided")
-            print("to:", tracker.get_slot("time")['to'])
-            print("from: ", tracker.get_slot("time")['from'])
+
             SlotSet("maxDate", tracker.get_slot("time")['to'])
             SlotSet("minDate", tracker.get_slot("time")['from'])
             slot_values.update({ 'maxDate': tracker.get_slot("time")['to']})
             slot_values.update({ 'minDate': tracker.get_slot("time")['from']})
         else:   
             if slot_to_fill == "maxDate":
+                if tracker.get_slot("time") is None:
+                    dispatcher.utter_message("I'm sorry I didn't get that.")
+                    return []
                 print("maxdate provided")
                 slot_values.update({ 'maxDate': tracker.get_slot("time")})
             
             elif slot_to_fill == "minDate":
+                if tracker.get_slot("time") is None:
+                    dispatcher.utter_message("I'm sorry I didn't get that.")
+                    return []
                 print("mindate provided")
                 slot_values.update({ 'minDate': tracker.get_slot("time")})
-
-
-
 
         if slot_to_fill:
             slot_values.update(self.extract_requested_slot(dispatcher, tracker, domain))
@@ -154,17 +155,19 @@ class ActionHelloWorld(Action):
 
         minDate = tracker.get_slot("minDate")
         maxDate = tracker.get_slot("maxDate")
-
+        
         parsedMinDate = parse(minDate)
         parsedMaxDate = parse(maxDate)
-        
+
         vaild_date_range = False
-        not_allowed_dates = [datetime(2020, 2, 12, 0, 0),
-                             datetime(2020, 7, 23, 0, 0),
-                             datetime(2020, 1, 9, 0, 0),
-                             datetime(2020, 2, 17, 0, 0)]
+        not_allowed_dates = [datetime(2020, 2, 12, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600))),
+                             datetime(2020, 7, 23, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600))),
+                             datetime(2020, 3, 9, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600))),
+                             datetime(2020, 2, 17, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600)))]
+
 
         delta = parsedMaxDate-parsedMinDate
+
         #between_dates = [parsedMinDate + timedelta(days=i) for i in range(delta.days + 1)]
         between_dates = [parsedMinDate + timedelta(days=i) for i in range(delta.days + 1)]
 

@@ -231,7 +231,6 @@
 ## synonym:walking
  - walk
  - foot
- - walking
  - run
  - stroll
  - hike
@@ -245,7 +244,6 @@
  - taxi
  - automobile
  - cab
- - driving
  - uber
 
 ## synonym:transit
@@ -254,7 +252,6 @@
  - subway
  - sub
  - railways
- - transit
 
 ## synonym:bicycling
  - bike
@@ -290,7 +287,22 @@
  - i'm flying to mallorca on january 16 so i need to book my vacation
  - i'm going to gran canaria on march 28 and i will need to book my vacation
 
-## intent:inform_leaving_date
+## intent:inform_dates
+  - i want to book a vacation from july 7 to august 11
+  - i want to book a vacation from the 5th to the 19th
+  - i am going to book my vacation from march 3 to april 7
+  - i will travel between may 15 to june 8
+  - i will travel between 4th to 16th
+  - i am going away on a vacation on september 2
+  - i will be away until october 1
+  - will travel until november 15
+  - need a vacation from december 11
+  - need a vacation to february 27
+  - i'm going away for a long time
+  - i'm flying to mallorca on january 16 so i need to book my vacation
+  - i'm going to gran canaria on march 28 and i will need to book my vacation
+  - i will travel between may 15 to june 8
+  - i will travel between 4th to 16th
   - i will leave the 5th
   - i travel on saturday
   - we are leaving feburary the 4th
@@ -321,8 +333,6 @@
   - i have to go in june
   - i need to go in february
   - i must go in january
-
-## intent:inform_return_date
   - i will be back the 6th
   - we arrive the 2nd march
   - i'm back in two weeks
