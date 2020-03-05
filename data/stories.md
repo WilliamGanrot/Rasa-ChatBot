@@ -101,6 +101,27 @@
     - utter_confirm_thank_you_bye
 
 
+
+
+## happy meeting path
+* greet
+    - utter_greet
+* request_meeting
+    - utter_ok
+    - meeting_form
+    - form{"name": "meeting_form"}
+    - form{"name": null}
+
+## happy meeting path 2
+* request_meeting
+    - utter_ok
+    - meeting_form
+    - form{"name": "meeting_form"}
+    - form{"name": null}
+
+
+
+
 ## fallback story
 * out_of_scope
     - action_default_fallback 

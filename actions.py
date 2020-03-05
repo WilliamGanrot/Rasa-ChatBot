@@ -19,6 +19,10 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+
+"""
+DIRECTIONS
+"""
 class ActionRequestDirections(FormAction):
     """Example of a custom form action"""
 
@@ -37,88 +41,50 @@ class ActionRequestDirections(FormAction):
         return []
 
 
+
+"""
+VACATION
+"""
 class ActionRequestVacation(FormAction):
     """Example of a custom form action"""
 
     def name(self) -> Text:
         return "vacation_form"
-
-    """    
+    
     def validate_minDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-
         print("setting minDate")
-
+        
         if type(tracker.get_slot("time")) is dict:
             SlotSet("minDate", tracker.get_slot("time")['from'])
             return { 'minDate': tracker.get_slot("time")['from'] }
         else:
             SlotSet("minDate", tracker.get_slot("time"))
             return { 'minDate': tracker.get_slot("time") }
-
+        
     def validate_maxDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-
         print("setting maxDate")
-
+        
         if type(tracker.get_slot("time")) is dict:
             SlotSet("maxDate", tracker.get_slot("time")['to'])
             return { 'maxDate': tracker.get_slot("time")['to'] }
         else:
             SlotSet("maxDate", tracker.get_slot("time"))
             return { 'maxDate': tracker.get_slot("time") }
-    """
-
-
-
-    def validate(self, dispatcher, tracker, domain):
-
-        slot_values = self.extract_other_slots(dispatcher, tracker, domain)
-
-        # extract requested slot
-        slot_to_fill = tracker.get_slot("requested_slot")
         
-        # Validate the time slots
-        if type(tracker.get_slot("time")) is dict:
-
-            SlotSet("maxDate", tracker.get_slot("time")['to'])
-            SlotSet("minDate", tracker.get_slot("time")['from'])
-            slot_values.update({ 'maxDate': tracker.get_slot("time")['to']})
-            slot_values.update({ 'minDate': tracker.get_slot("time")['from']})
-        else:   
-            if slot_to_fill == "maxDate":
-                if tracker.get_slot("time") is None:
-                    dispatcher.utter_message("I'm sorry I didn't get that.")
-                    return []
-                print("maxdate provided")
-                slot_values.update({ 'maxDate': tracker.get_slot("time")})
             
-            elif slot_to_fill == "minDate":
-                if tracker.get_slot("time") is None:
-                    dispatcher.utter_message("I'm sorry I didn't get that.")
-                    return []
-                print("mindate provided")
-                slot_values.update({ 'minDate': tracker.get_slot("time")})
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
 
-        if slot_to_fill:
-            slot_values.update(self.extract_requested_slot(dispatcher, tracker, domain))
+        return {
+            "minDate": self.from_entity(entity="time"),
+            "maxDate": self.from_entity(entity="time")
+        }
+    
 
-            if not slot_values:
-                
-                raise ActionExecutionRejection(
-                    self.name(),
-                    "Failed to extract slot {0} "
-                    "with action {1}"
-                    "".format(slot_to_fill, self.name()),
-                )
-
-        return self.validate_slots(slot_values, dispatcher, tracker, domain)
-
+    
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
 
         return ["minDate", "maxDate"]
-
-
-
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 
@@ -126,33 +92,13 @@ class ActionRequestVacation(FormAction):
         dispatcher.utter_message()
         return []
 
-
 class ActionHelloWorld(Action):
 
     def name(self) -> Text:
         return "check_if_valid_dates"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        SCOPES = ['https://www.googleapis.com/auth/calendar']
-        creds = None
-        if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
-                creds = pickle.load(token)
-        # If there are no (valid) credentials available, let the user log in.
-        if not creds or not creds.valid:
-            if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
-            else:
-                flow = InstalledAppFlow.from_client_secrets_file('client_id.json', SCOPES)
-                creds = flow.run_local_server(port=0)
-            # Save the credentials for the next run
-            with open('token.pickle', 'wb') as token:
-                pickle.dump(creds, token)
-        service = build('calendar', 'v3', credentials=creds, cache_discovery=False)
-
-
-
+        
         minDate = tracker.get_slot("minDate")
         maxDate = tracker.get_slot("maxDate")
         
@@ -220,4 +166,58 @@ class ActionHelloWorld2(Action):
         print('Event created: %s' % (result.get('htmlLink')))
 
         dispatcher.utter_message("Okay, I have booked it in you calender, view it here: " + (result.get('htmlLink')))
+        return []
+
+"""
+MEETING
+"""
+class ActionRequestDirections(FormAction):
+    """Example of a custom form action"""
+
+    def name(self) -> Text:
+        return "meeting_form"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+
+
+        return ["host_email", "invite_email"]
+    
+    def validate(self, dispatcher, tracker, domain):
+
+        slot_values = self.extract_other_slots(dispatcher, tracker, domain)
+        slot_to_fill = tracker.get_slot("requested_slot")
+
+
+        """
+        if tracker.latest_message['intent'].get('name') == "request_meeting_provide_host":
+            pass
+        elif tracker.latest_message['intent'].get('name') == "request_meeting_provide_attedning":
+            pass
+        elif tracker.latest_message['intent'].get('name') == "inform_email":
+            pass
+        
+        """
+
+
+
+
+
+
+
+        
+
+        if slot_to_fill == "host_email":
+            #print("Success")
+            #print(tracker.get_slot("email"))
+            slot_values.update({'host_email': tracker.get_slot("email") + ", hej"  })
+            #print(tracker.get_slot("host_email"))
+            slot_values.update({'email': None})
+
+        return self.validate_slots(slot_values, dispatcher, tracker, domain)
+
+    def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
+
+        dispatcher.utter_message(template="utter_submit")
         return []
