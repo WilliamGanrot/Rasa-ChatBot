@@ -171,7 +171,7 @@ class ActionHelloWorld2(Action):
 """
 MEETING
 """
-class ActionRequestDirections(FormAction):
+class RequestMeeting(FormAction):
     """Example of a custom form action"""
 
     def name(self) -> Text:
@@ -221,3 +221,40 @@ class ActionRequestDirections(FormAction):
 
         dispatcher.utter_message(template="utter_submit")
         return []
+class ActionRequestMeeting(FormAction):
+    def name(self) -> Text:
+        return "request_meeting_form"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        return ['meeting_date']
+
+    def validate_meeting_date(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
+
+        print("setting meeting_date")
+        SlotSet("meeting_date", tracker.get_slot("time"))
+
+        return { 'meeting_date': tracker.get_slot("time") }
+
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+        return {
+            "meeting_date": self.from_entity(entity="time")
+    }
+
+    def submit(self, dispatcher: CollectingDispatcher,
+               tracker: Tracker,
+               domain: Dict[Text, Any]):
+        print(tracker.get_slot("meeting_date"))
+        dispatcher.utter_message(template="utter_submit")
+        return []
+
+"""
+class TestAction2(Action):
+    def name(self) -> Text:
+        return "test_action"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print('I am here')
+
+        return[]
+"""

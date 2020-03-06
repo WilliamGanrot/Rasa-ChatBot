@@ -352,3 +352,10 @@ Problem, slots that gets extracted in request_vacation doesnt get validated
   - [miastensson@yahoo.com](email)
   - my email is [ehllosson@hhhe.com](email)
   - my address is [qwfqon@host.com](email)
+  
+## intent:request_meeting
+  - i wanna book a meeting on [sunday](meeting_date)
+  - i need to book a meeting on [monday](meeting_date)
+  - i am going to book a meeting [the 8th](meeting_date)
+  - i must book a meeting [on august 8](meeting_date)
+  - i want to book a meeting [tomorrow](meeting_date)
