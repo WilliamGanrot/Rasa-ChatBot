@@ -2,3 +2,7 @@ email.txt
 pwd.txt
 message.txt
 mycontacts.txt
+models
+token.pickle
+client_id.json
+__pycache__
