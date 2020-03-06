@@ -6,7 +6,6 @@ intents:
     use_entities: []
 - request_vacation:
     use_entities: []
-
 - request_meeting:
     use_entities: []
 - request_meeting_provide_host:
@@ -37,10 +36,9 @@ entities:
 - form_location
 - from_directions
 - to_loction
-
 - host_email
 - invite_email
-
+- meeting_date
 slots:
   from_location:
     type: unfeaturized
@@ -58,7 +56,6 @@ slots:
     auto_fill: false
   travel_mode:
     type: unfeaturized
-  
   email:
     type: unfeaturized
   host_email:
@@ -67,7 +64,8 @@ slots:
   invite_email:
     type: unfeaturized
     auto_fill: false
-
+  meeting_date:
+    type: unfeaturized
 templates:
   utter_greet:
   - text: "Hello! I am an assistant that can help with directions and to book your\
@@ -103,12 +101,14 @@ templates:
   - text: Unfortunately you can't have vacation these dates!
   utter_ask_add_to_calender:
   - text: Okay, do you wish to add the event to your calender?
-
   utter_ask_host_email:
   - text: "What is your email?"
   utter_ask_invite_email:
   - "What are the emails of the persons you would like to invite?"
-
+  utter_ask_meeting_date:
+  - text: When?
+  utter_date_value:
+  - text: "The form parameter is: \n - meeting_date: {meeting_date}"
 actions:
 - utter_greet
 - utter_greet_and_confirm_help
@@ -134,3 +134,4 @@ forms:
 - directions_form
 - vacation_form
 - meeting_form
+- request_meeting_form
