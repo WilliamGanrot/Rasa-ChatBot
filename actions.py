@@ -51,40 +51,97 @@ class ActionRequestVacation(FormAction):
     def name(self) -> Text:
         return "vacation_form"
     
-    def validate_minDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-        print("setting minDate")
-        
-        if type(tracker.get_slot("time")) is dict:
-            SlotSet("minDate", tracker.get_slot("time")['from'])
-            return { 'minDate': tracker.get_slot("time")['from'] }
-        else:
-            SlotSet("minDate", tracker.get_slot("time"))
-            return { 'minDate': tracker.get_slot("time") }
-        
-    def validate_maxDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-        print("setting maxDate")
-        
-        if type(tracker.get_slot("time")) is dict:
-            SlotSet("maxDate", tracker.get_slot("time")['to'])
-            return { 'maxDate': tracker.get_slot("time")['to'] }
-        else:
-            SlotSet("maxDate", tracker.get_slot("time"))
-            return { 'maxDate': tracker.get_slot("time") }
-        
-            
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
-
-        return {
-            "minDate": self.from_entity(entity="time"),
-            "maxDate": self.from_entity(entity="time")
-        }
-    
-
-    
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
 
         return ["minDate", "maxDate"]
+
+    def validate_minDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
+        """
+        if tracker.latest_message['intent'].get('name') == "inform_leaving_date" or tracker.latest_message['intent'].get('name') == "request_vacation":
+
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("minDate", tracker.get_slot("time")['from'])
+                return { 'minDate': tracker.get_slot("time")['from'] }
+            else:
+                #SlotSet("minDate", tracker.get_slot("time"))
+                return { 'minDate': tracker.get_slot("time") }
+        elif tracker.latest_message['intent'].get('name') == "inform_return_date":
+            
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("maxDate", tracker.get_slot("time")['to'])
+                return { 'maxDate': tracker.get_slot("time")['to'] }
+            else:
+                #SlotSet("maxDate", tracker.get_slot("time"))
+                return { 'maxDate': tracker.get_slot("time") }
+
+        """
+        if tracker.latest_message['intent'].get('name') == "inform_return_date":
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("maxDate", tracker.get_slot("time")['to'])
+                return { 'maxDate': tracker.get_slot("time")['to'] }
+            else:
+                #SlotSet("maxDate", tracker.get_slot("time"))
+                if tracker.get_slot("minTime") == tracker.get_slot("maxTime"):
+                    return { 'maxDate': tracker.get_slot("time"), "minDate":None } 
+                return { 'maxDate': tracker.get_slot("time") } 
+
+        else:
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("minDate", tracker.get_slot("time")['from'])
+                return { 'minDate': tracker.get_slot("time")['from'] }
+            else:
+                #SlotSet("minDate", tracker.get_slot("time"))
+                
+
+
+
+                return { 'minDate': tracker.get_slot("time") }
+    def validate_maxDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
+        """
+        if tracker.latest_message['intent'].get('name') == "inform_return_date" or tracker.latest_message['intent'].get('name') == "request_vacation":
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("maxDate", tracker.get_slot("time")['to'])
+                return { 'maxDate': tracker.get_slot("time")['to'] }
+            else:
+                #SlotSet("maxDate", tracker.get_slot("time"))
+                return { 'maxDate': tracker.get_slot("time"), 'minDate':None}
+
+        elif tracker.latest_message['intent'].get('name') == "inform_leaving_date":
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("minDate", tracker.get_slot("time")['from'])
+                return { 'minDate': tracker.get_slot("time")['from'] }
+            else:
+                #SlotSet("minDate", tracker.get_slot("time"))
+                return { 'minDate': tracker.get_slot("time"), 'maxDate':None }
+        """
+        if tracker.latest_message['intent'].get('name') == "inform_leaving_date":
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("minDate", tracker.get_slot("time")['from'])
+                return { 'minDate': tracker.get_slot("time")['from'] }
+            else:
+                #SlotSet("minDate", tracker.get_slot("time"))
+                
+                
+                if tracker.get_slot("minTime") == tracker.get_slot("maxTime"):
+                    return { 'minDate': tracker.get_slot("time"), "maxDate":None}
+                else:
+                    return { 'minDate': tracker.get_slot("time")}
+        else:
+            if type(tracker.get_slot("time")) is dict:
+                #SlotSet("maxDate", tracker.get_slot("time")['to'])
+                return { 'maxDate': tracker.get_slot("time")['to'] }
+            else:
+                #SlotSet("maxDate", tracker.get_slot("time"))
+                
+
+                return { 'maxDate': tracker.get_slot("time")}
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+
+        return {
+            "minDate": [self.from_entity(entity="time")],
+            "maxDate": [self.from_entity(entity="time")]
+        }
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 
