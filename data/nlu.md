@@ -359,3 +359,25 @@ Problem, slots that gets extracted in request_vacation doesnt get validated
   - i am going to book a meeting [the 8th](meeting_date)
   - i must book a meeting [on august 8](meeting_date)
   - i want to book a meeting [tomorrow](meeting_date)
+
+<!--
+## intent:help_desk
+  - i need help
+  - i want help
+  - help me
+  - please i need help
+  - i really need some help
+  - help
+-->
+
+## intent:forgot_password
+  - i forgot my password
+  - i do not remember my password
+  - i need to recover my password
+  - i lost my password
+
+## intent:forgot_email
+  - i forgot my email address
+  - i do not remember my email
+  - i need to recover my email
+  - i lost my email address

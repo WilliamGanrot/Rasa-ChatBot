@@ -12,6 +12,12 @@ intents:
     use_entities: []
 - request_meeting_provide_attedning:
     use_entities: []
+- help_desk:
+    use_entities: []
+- forgot_password:
+    use_entities: []
+- forgot_email:
+    use_entities: []
 - greet
 - goodbye
 - thank_you_bye
@@ -109,6 +115,9 @@ templates:
   - text: When?
   utter_date_value:
   - text: "The form parameter is: \n - meeting_date: {meeting_date}"
+  utter_resend_password:
+  - text: "A randomized password has been sent to {host_email}"
+
 actions:
 - utter_greet
 - utter_greet_and_confirm_help
@@ -128,6 +137,7 @@ actions:
 - utter_not_valid_dates
 - book_in_calender
 - utter_ok
+- utter_resend_password
 
 - format_date
 forms:
@@ -135,3 +145,5 @@ forms:
 - vacation_form
 - meeting_form
 - request_meeting_form
+- forgot_password_form
+- forgot_email_form

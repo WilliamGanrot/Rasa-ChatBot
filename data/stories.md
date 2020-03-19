@@ -132,8 +132,22 @@
     - form{"name": "meeting_form"}
     - form{"name": null}
 
+## happy forgot password path
+* greet
+    - utter_greet
+* forgot_password
+    - forgot_password_form
+    - form{"name": "forgot_password_form"}
+    - form{"name": null}
+    - utter_resend_password
 
-
+## happy forgot email path
+* greet
+    - utter_greet
+* forgot_email
+    - forgot_email_form
+    - form{"name": "forgot_email_form"}
+    - form{"name": null} 
 
 ## fallback story
 * out_of_scope
