@@ -360,24 +360,33 @@ Problem, slots that gets extracted in request_vacation doesnt get validated
   - i must book a meeting [on august 8](meeting_date)
   - i want to book a meeting [tomorrow](meeting_date)
 
-<!--
-## intent:help_desk
-  - i need help
-  - i want help
-  - help me
-  - please i need help
-  - i really need some help
-  - help
--->
-
 ## intent:forgot_password
   - i forgot my password
   - i do not remember my password
   - i need to recover my password
   - i lost my password
 
-## intent:forgot_email
-  - i forgot my email address
-  - i do not remember my email
-  - i need to recover my email
-  - i lost my email address
+## intent:ask_opening_hours
+  - what is your opening hours?
+  - when do you have open?
+  - when is your office open?
+  - is your office open today?
+  - is your office open tomorrow?
+  - is your office open next week?
+  - is the office closed now?
+
+## intent:ask_website
+  - what is your website?
+  - where can i find more information?
+  - can you give me the web address please?
+  - can i know what the website is please?
+  - what is the website?
+  - is the information on the website?
+
+## intent:ask_job
+  - are there any job opportunities?
+  - are there any career opportunities?
+  - are there any open jobs?
+  - where can i apply for a job position?
+  - does the company have any job page?
+  - can i see available job positions somewhere?

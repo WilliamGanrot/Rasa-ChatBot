@@ -12,12 +12,6 @@ intents:
     use_entities: []
 - request_meeting_provide_attedning:
     use_entities: []
-- help_desk:
-    use_entities: []
-- forgot_password:
-    use_entities: []
-- forgot_email:
-    use_entities: []
 - greet
 - goodbye
 - thank_you_bye
@@ -32,6 +26,10 @@ intents:
 - affirm
 - deny
 - inform_dates
+- forgot_password
+- ask_opening_hours
+- ask_website
+- ask_job
 entities:
 - from_location
 - to_location
@@ -117,6 +115,12 @@ templates:
   - text: "The form parameter is: \n - meeting_date: {meeting_date}"
   utter_resend_password:
   - text: "A randomized password has been sent to {host_email}"
+  utter_give_opening_hours:
+  - text: "Our opening hours are monday-friday: 8-17, saturday: 9-17 and sunday: 10-17."
+  utter_give_website:
+  - text: "More information can be found on our website at https://somecompanyname.com"
+  utter_give_job_page:
+  - text: "Job opportunities, careers and more can be found on our website at https://somecompanyname.com/jobs"
 
 actions:
 - utter_greet
@@ -138,12 +142,13 @@ actions:
 - book_in_calender
 - utter_ok
 - utter_resend_password
-
+- utter_give_opening_hours
 - format_date
+- utter_give_website
+- utter_give_job_page
 forms:
 - directions_form
 - vacation_form
 - meeting_form
 - request_meeting_form
 - forgot_password_form
-- forgot_email_form

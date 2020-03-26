@@ -340,30 +340,3 @@ class ActionForgotPassword(FormAction):
 
         dispatcher.utter_message(template="utter_submit")
         return []
-
-class ActionForgotEmail(FormAction):
-    def name(self) -> Text:
-        return "forgot_email_form"
-
-    @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
-        return ['meeting_date']
-
-    def validate_meeting_date(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-
-        print("setting meeting_date")
-        SlotSet("meeting_date", tracker.get_slot("time"))
-
-        return { 'meeting_date': tracker.get_slot("time") }
-
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
-        return {
-            "meeting_date": self.from_entity(entity="time")
-    }
-
-    def submit(self, dispatcher: CollectingDispatcher,
-               tracker: Tracker,
-               domain: Dict[Text, Any]):
-        print(tracker.get_slot("meeting_date"))
-        dispatcher.utter_message(template="utter_submit")
-        return []

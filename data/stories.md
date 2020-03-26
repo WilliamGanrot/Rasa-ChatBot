@@ -140,14 +140,105 @@
     - form{"name": "forgot_password_form"}
     - form{"name": null}
     - utter_resend_password
+* thank_you_bye
+    - utter_confirm_thank_you_bye
 
-## happy forgot email path
+## happy forgot password path 2
 * greet
     - utter_greet
-* forgot_email
-    - forgot_email_form
-    - form{"name": "forgot_email_form"}
-    - form{"name": null} 
+* forgot_password
+    - forgot_password_form
+    - form{"name": "forgot_password_form"}
+    - form{"name": null}
+    - utter_resend_password
+
+## happy forgot password path 3
+* forgot_password
+    - forgot_password_form
+    - form{"name": "forgot_password_form"}
+    - form{"name": null}
+    - utter_resend_password
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy forgot password path 4
+* forgot_password
+    - forgot_password_form
+    - form{"name": "forgot_password_form"}
+    - form{"name": null}
+    - utter_resend_password
+
+## happy opening hours path
+* greet
+    - utter_greet
+* ask_opening_hours
+    - utter_give_opening_hours
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy opening hours path 2
+* greet
+    - utter_greet
+* ask_opening_hours
+    - utter_give_opening_hours
+
+## happy opening hours path 3
+* ask_opening_hours
+    - utter_give_opening_hours
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy opening hours path 4
+* ask_opening_hours
+    - utter_give_opening_hours
+
+## happy ask website path
+* greet
+    - utter_greet
+* ask_website
+    - utter_give_website
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy ask website path 2
+* greet
+    - utter_greet
+* ask_website
+    - utter_give_website
+
+## happy ask website path 3
+* ask_website
+    - utter_give_website
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy ask website path 4
+* ask_website
+    - utter_give_website
+
+## happy ask job path
+* greet
+    - utter_greet
+* ask_job
+    - utter_give_job_page
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy ask job path 2
+* greet
+    - utter_greet
+* ask_job
+    - utter_give_job_page
+
+## happy ask job path 3
+* ask_job
+    - utter_give_job_page
+* thank_you_bye
+    - utter_confirm_thank_you_bye
+
+## happy ask job path 4
+* ask_job
+    - utter_give_job_page
 
 ## fallback story
 * out_of_scope
