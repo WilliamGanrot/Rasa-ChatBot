@@ -6,7 +6,7 @@ import requests
 import random
 import json
 import pickle
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import pytz
 from tzlocal import get_localzone
 
@@ -46,11 +46,6 @@ class User:
         self.email = email
         self.givenAccess = givenAccess
 
-class Payload(object):
-     def __init__(self, j):
-        self.__dict__ = json.loads(j)
-
-
 def findUser(users, userId):
     for user in users:
         print(user)
@@ -68,12 +63,14 @@ def allHasAccepted(users):
 
 def findDate(users, meetingDate):
 
-    d = datetime.today()
-    d = datetime.today().replace(day=30, hour=8, minute=0, second=0, microsecond=0)
+    d = datetime.strptime(meetingDate, "%Y-%m-%d").date()
+    d = datetime.combine(d, datetime.min.time())
+    d = d.replace(hour=8, minute=0, second=0, microsecond=0)
+
 
     while True:
         foundDate = True
-
+        print("checking date: ", str(d), d.weekday())
         for user in users:
             creds = None
             with open('mysite/pickles/' + user.email +'_token.pickle', 'rb') as token:
@@ -89,14 +86,11 @@ def findDate(users, meetingDate):
                                                     maxResults=10, singleEvents=True,
                                                     orderBy='startTime').execute()
                 events = events_result.get('items', [])
-                #print("Event between", lowerTime, " and ", upperTime)
-                #print("event:", events)
 
                 if len(events) > 0:
                     foundDate = False
 
         if foundDate:
-            
             break
         else:
             #if day is about to end, change date and make sure it is not a saturday or sunday
@@ -105,7 +99,8 @@ def findDate(users, meetingDate):
                     d = d.replace(hour=8)
                     d += timedelta(days=1)
 
-                    if d.weekday() != 6 and d.weekday() != 7:
+                    if d.weekday() != 5 and d.weekday() != 6:
+                        #print("weekday:", str(d.weekday()))
                         break
 
             else:
@@ -114,9 +109,33 @@ def findDate(users, meetingDate):
                     d += timedelta(hours=2)
                 else:
                     d += timedelta(hours=1)
-    
+
     # create meeting event for all users
     print("the final settled date and time is:", d)
+    for user in users:
+        creds = None
+        with open('mysite/pickles/' + user.email +'_token.pickle', 'rb') as token:
+
+            creds = pickle.load(token)
+
+            calender = googleapiclient.discovery.build(
+                API_SERVICE_NAME, API_VERSION, credentials=creds, cache_discovery=False)
+
+
+            min = d - timedelta(hours=2) #remove 2 hours due to timezone offset
+            max = min + timedelta(hours=1)
+            event = {
+              'summary': 'Meeting',
+              'location': 'Karlstad',
+              'description': 'A test meeting.',
+              'start': {
+                  'dateTime': min.isoformat() + 'Z',
+              },
+              'end': {
+                  'dateTime': max.isoformat() + 'Z',
+              }}
+
+            result = calender.events().insert(calendarId='primary', body=event).execute()
 
 def sendEmail(user, meetingid):
     print("Sending mail to: ", user.email)
@@ -185,11 +204,6 @@ def authorize():
   # value doesn't match an authorized URI, you will get a 'redirect_uri_mismatch'
   # error.
   flow.redirect_uri = flask.url_for('oauth2callback', _external=True)
-  print("flow.redirect_uri")
-  print(flow.redirect_uri)
-  print("")
-
-
 
   authorization_url, state = flow.authorization_url(
       # Enable offline access so that you can refresh an access token without
@@ -200,11 +214,6 @@ def authorize():
 
   # Store the state so the callback can verify the auth server response.
   flask.session['state'] = state
-
-
-  print("authorization_url")
-  print(authorization_url)
-  print("")
 
   return flask.redirect(authorization_url)
 
@@ -242,7 +251,9 @@ def oauth2callback():
 def invitegrouptomeeting():
 
     emails = flask.request.args.getlist("email")
+    meetingDate = flask.request.args["meetingDate"]
     users = []
+
 
     meetindId = random.randint(0,100000)
 
@@ -254,10 +265,11 @@ def invitegrouptomeeting():
 
     with open('mysite/meetings/meeting_'+str(meetindId) + '.json', 'w') as f:
 
-        serialized = json.dumps([ob.__dict__ for ob in users])
+        d = {}
+        d["users"] = [ob.__dict__ for ob in users]
+        d["meetingDate"] = meetingDate
 
-        f.write(serialized)
-        print(serialized)
+        f.write(json.dumps(d))
 
     return "I created a meeting for you with the id: " + str(meetindId)
 
@@ -267,13 +279,15 @@ def joinmeeting():
     if 'meetingId' in flask.request.args and 'userId' in flask.request.args:
         flask.session["meetingId"] = flask.request.args["meetingId"]
         flask.session["userId"] = flask.request.args["userId"]
-        flask.session["meetingDate"] = flask.request.args["meetingDate"]
 
     if 'credentials' not in flask.session:
         return flask.redirect('authorizejoinmeeting')
 
     with open('mysite/meetings/meeting_'+str(flask.session.get('meetingId')) + '.json', 'r') as f:
-        user_data = json.load(f)
+        data = json.load(f)
+
+    user_data = data["users"]
+    meetingDate = data["meetingDate"]
 
     users = []
     for obj in user_data:
@@ -283,8 +297,12 @@ def joinmeeting():
     user.givenAccess = True
 
     with open('mysite/meetings/meeting_'+str(flask.session.get('meetingId')) + '.json', 'w') as f:
-        serialized = json.dumps([ob.__dict__ for ob in users])
-        f.write(serialized)
+
+        d = {}
+        d["users"] = [ob.__dict__ for ob in users]
+        d["meetingDate"] = meetingDate
+
+        f.write(json.dumps(d))
 
 
     credentials = google.oauth2.credentials.Credentials(
@@ -295,7 +313,7 @@ def joinmeeting():
 
 
     if allHasAccepted(users) == True:
-        findDate(users, flask.session["meetingDate"])
+        findDate(users, meetingDate)
 
 
 
@@ -341,34 +359,8 @@ def oauth2callbackjoinmeeting():
   # ACTION ITEM: In a production app, you likely want to save these
   #              credentials in a persistent database instead.
   credentials = flow.credentials
-  print("creds is type of:", type(credentials))
-  flask.session['credentials'] = credentials_to_dict(credentials)
-  print("token:", flask.session.get('credentials').get('token'))
-  print("refresh_token: ", flask.session.get('credentials').get('refresh_token'))
-  print("client_id:", flask.session.get('credentials').get('client_id'))
-  print("client_secret:", flask.session.get('credentials').get('client_secret'))
-  print("token_uri:", flask.session.get('credentials').get('token_uri'))
-
-  gCreds = GoogleCredentials(
-    flask.session.get('credentials').get('token'),
-    flask.session.get('credentials').get('client_id'),
-    flask.session.get('credentials').get('client_secret'),
-    flask.session.get('credentials').get('refresh_token'),
-    None,
-    flask.session.get('credentials').get('token_uri'),
-    'Python client library',
-    revoke_uri=None
-    )
-
 
   return flask.redirect(flask.url_for('joinmeeting'))
-
-
-
-
-
-
-
 
 
 
