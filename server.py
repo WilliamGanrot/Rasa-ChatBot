@@ -46,6 +46,11 @@ class User:
         self.email = email
         self.givenAccess = givenAccess
 
+class Payload(object):
+     def __init__(self, j):
+        self.__dict__ = json.loads(j)
+
+
 def findUser(users, userId):
     for user in users:
         print(user)
@@ -65,7 +70,16 @@ def findDate(users, meetingDate):
 
     d = datetime.strptime(meetingDate, "%Y-%m-%d").date()
     d = datetime.combine(d, datetime.min.time())
-    d = d.replace(hour=8, minute=0, second=0, microsecond=0)
+
+    if d.date() == datetime.today().date():
+
+        currentTime = datetime.today() + timedelta(hours=2)#ad hours for timezone offset
+        futureTime = currentTime + timedelta(hours=1)
+        h = futureTime.time().hour
+
+        d = d.replace(hour=h, minute=0, second=0, microsecond=0)
+    else:
+        d = d.replace(hour=8, minute=0, second=0, microsecond=0)
 
 
     while True:
@@ -189,7 +203,7 @@ def test_api_request():
 
   calendars = calender.calendarList().list().execute()
 
-  return flask.redirect("http://localhost:5002/interactive", code=302)
+  return "Vacation has been added to your calender"
 
 
 @app.route('/authorize')
@@ -265,6 +279,7 @@ def invitegrouptomeeting():
 
     with open('mysite/meetings/meeting_'+str(meetindId) + '.json', 'w') as f:
 
+
         d = {}
         d["users"] = [ob.__dict__ for ob in users]
         d["meetingDate"] = meetingDate
@@ -282,6 +297,7 @@ def joinmeeting():
 
     if 'credentials' not in flask.session:
         return flask.redirect('authorizejoinmeeting')
+
 
     with open('mysite/meetings/meeting_'+str(flask.session.get('meetingId')) + '.json', 'r') as f:
         data = json.load(f)
@@ -310,6 +326,7 @@ def joinmeeting():
 
     with open('mysite/pickles/' + user.email + '_token.pickle', 'wb') as token:
         pickle.dump(credentials, token)
+
 
 
     if allHasAccepted(users) == True:
@@ -359,8 +376,34 @@ def oauth2callbackjoinmeeting():
   # ACTION ITEM: In a production app, you likely want to save these
   #              credentials in a persistent database instead.
   credentials = flow.credentials
+  print("creds is type of:", type(credentials))
+  flask.session['credentials'] = credentials_to_dict(credentials)
+  print("token:", flask.session.get('credentials').get('token'))
+  print("refresh_token: ", flask.session.get('credentials').get('refresh_token'))
+  print("client_id:", flask.session.get('credentials').get('client_id'))
+  print("client_secret:", flask.session.get('credentials').get('client_secret'))
+  print("token_uri:", flask.session.get('credentials').get('token_uri'))
+
+  gCreds = GoogleCredentials(
+    flask.session.get('credentials').get('token'),
+    flask.session.get('credentials').get('client_id'),
+    flask.session.get('credentials').get('client_secret'),
+    flask.session.get('credentials').get('refresh_token'),
+    None,
+    flask.session.get('credentials').get('token_uri'),
+    'Python client library',
+    revoke_uri=None
+    )
+
 
   return flask.redirect(flask.url_for('joinmeeting'))
+
+
+
+
+
+
+
 
 
 
