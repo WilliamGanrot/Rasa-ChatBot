@@ -6,9 +6,7 @@ pipeline:
     url: http://localhost:8000
     locale: en_GB
     timezone: Europe/Stockholm
-    dimensions:    
-      - time
-      - email
+    dimensions: ["email", "time"]
 
   #Default supervised_embelding
   - name: "WhitespaceTokenizer"

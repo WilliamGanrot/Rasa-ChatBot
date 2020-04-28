@@ -6,12 +6,10 @@ intents:
     use_entities: []
 - request_vacation:
     use_entities: []
+
 - request_meeting:
     use_entities: []
-- request_meeting_provide_host:
-    use_entities: []
-- request_meeting_provide_attedning:
-    use_entities: []
+
 - greet
 - goodbye
 - thank_you_bye
@@ -30,6 +28,8 @@ intents:
 - ask_opening_hours
 - ask_website
 - ask_job
+- inform_email
+- affirm_add_more
 entities:
 - from_location
 - to_location
@@ -40,9 +40,13 @@ entities:
 - form_location
 - from_directions
 - to_loction
-- host_email
-- invite_email
+
+- inviteemail
 - meeting_date
+- invite_more_bool
+- emaillist
+
+
 slots:
   from_location:
     type: unfeaturized
@@ -55,27 +59,37 @@ slots:
     type: unfeaturized
   time:
     type: unfeaturized
+  email:
+    type: unfeaturized
+    auto_fill: 1
   to_location:
     type: unfeaturized
     auto_fill: false
   travel_mode:
     type: unfeaturized
-  email:
-    type: unfeaturized
-  host_email:
+  inviteemail:
     type: unfeaturized
     auto_fill: false
-  invite_email:
+  invite_more_bool:
     type: unfeaturized
     auto_fill: false
+  emaillist:
+    type: text
   meeting_date:
     type: unfeaturized
+  
+  attending:
+    type: list
+    
 templates:
   utter_greet:
   - text: "Hello! I am an assistant that can help with directions and to book your\
       \ vacation.\n How can I help you?"
   utter_ok:
   - text: "Okay!"
+  utter_ask_email:
+  - text: "i need you email!"
+  
   utter_greet_and_confirm_help:
   - text: Hello! Yes I can help you with that?
   utter_confirm_thank_you_bye:
@@ -105,10 +119,11 @@ templates:
   - text: Unfortunately you can't have vacation these dates!
   utter_ask_add_to_calender:
   - text: Okay, do you wish to add the event to your calender?
-  utter_ask_host_email:
-  - text: "What is your email?"
-  utter_ask_invite_email:
+  utter_ask_invite_more_bool:
+  - text: Do you wish to add anyone else to the meeting?
+  utter_ask_inviteemail:
   - "What are the emails of the persons you would like to invite?"
+
   utter_ask_meeting_date:
   - text: When?
   utter_date_value:
@@ -147,8 +162,8 @@ actions:
 - utter_give_website
 - utter_give_job_page
 forms:
+
 - directions_form
 - vacation_form
 - meeting_form
-- request_meeting_form
 - forgot_password_form

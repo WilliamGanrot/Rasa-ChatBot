@@ -346,20 +346,36 @@ Problem, slots that gets extracted in request_vacation doesnt get validated
   - i need to have a meeting with kerstin@kau.se
 
 ## intent:inform_email
-  - [williamganrot@hotmail.com](email)
-  - [bengt.göransson@hotmail.com](email)
-  - [felix_berg@gmail.com](email)
-  - [miastensson@yahoo.com](email)
-  - my email is [ehllosson@hhhe.com](email)
-  - my address is [qwfqon@host.com](email)
-  
+  - williamganrot@hotmail.com
+  - bengt.göransson@hotmail.com
+  - felix_berg@gmail.com
+  - miastensson@yahoo.com
+  - my email is ehllosson@hhhe.com
+  - my address is qwfqon@host.comf
+  - berit@yahoo.se, martin.emil@gmail.com and kalr_berg@gmail.com
+  - larskessler@kau.se bob@spay.net
+
+## intent:affirm_add_more
+  - yes, i also want to add exampe@server.com
+  - yes wowcool@gmail.se and coolboy@servertest.com
+  - yes please add ganrot@testwow.se
+  - add poopybut@ghjkl.net
+  - please add hjmn@hotmail.com
+  - please add bert@spray.se
+  - yes wow@gmail.com
+  - yes add hjkef_vef@gfwe.com
+  - yes add gewe.rgw@fwoj.net and ger_erge@bert.com
+  - yes faitma_m@gmail.com
+
+
+<!-- 
 ## intent:request_meeting
   - i wanna book a meeting on [sunday](meeting_date)
   - i need to book a meeting on [monday](meeting_date)
   - i am going to book a meeting [the 8th](meeting_date)
   - i must book a meeting [on august 8](meeting_date)
   - i want to book a meeting [tomorrow](meeting_date)
-
+-->
 ## intent:forgot_password
   - i forgot my password
   - i do not remember my password
