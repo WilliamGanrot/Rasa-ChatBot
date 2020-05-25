@@ -48,7 +48,6 @@
     - vacation_form
     - form{"name": "vacation_form"}
     - form{"name": null}
-    - utter_date_values
     - check_if_valid_dates
         - slot{"is_valid_dates": true}
             - utter_ask_add_to_calender
@@ -65,7 +64,6 @@
     - vacation_form
     - form{"name": "vacation_form"}
     - form{"name": null}
-    - utter_date_values
     - check_if_valid_dates
         - slot{"is_valid_dates": true}
             - utter_ask_add_to_calender
@@ -81,7 +79,6 @@
     - vacation_form
     - form{"name": "vacation_form"}
     - form{"name": null}
-    - utter_date_values
     - check_if_valid_dates
         - slot{"is_valid_dates": true}
             - utter_ask_add_to_calender
@@ -98,7 +95,6 @@
     - vacation_form
     - form{"name": "vacation_form"}
     - form{"name": null}
-    - utter_date_values
     - check_if_valid_dates
         - slot{"is_valid_dates": false}
             - utter_not_valid_dates

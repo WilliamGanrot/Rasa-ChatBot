@@ -277,52 +277,54 @@ Problem, slots that gets extracted in request_vacation doesnt get validated
   - can i take some time of
   - i want to book my vacation
  - i need to book a vacation
- - i want to book a vacation from [july 7](minDate) to [august 11](maxDate)
- - i am going to book my vacation from [march 3](minDate) to [april 7](maxDate)
- - i will travel between [may 15](minDate) to [june 8](maxDate)
- - i am going away on a vacation on [september 2](minDate)
- - i will be away until [october 1](maxDate)
- - will travel until [november 15](maxDate)
- - need a vacation from [december 11](minDate)
- - need a vacation to [february 27](maxDate)
+ - i want to book a vacation from july 7august 11
+ - i am going to book my vacation from march 3 to [april 7
+ - i will travel between may 15 to june 8
+ - i am going away on a vacation on september 2
+ - i will be away until october 1
+ - will travel until november 15
+ - need a vacation from december 11
+ - need a vacation to february 27
  - i'm going away for a long time
- - i'm flying to mallorca on [january 16](minDate) so i need to book my vacation
- - i'm going to gran canaria on [march 28](minDate) and i will need to book my vacation
- - need a vacation from [december 11](minDate)
- - need a vacation to [february 27](maxDate)
+ - i'm flying to mallorca on january 16 so i need to book my vacation
+ - i'm going to gran canaria on march 28 and i will need to book my vacation
+ - need a vacation from december 11
+ - need a vacation to february 27
  - i'm going away for a long time
- - i'm flying to mallorca on [january 16](minDate) so i need to book my vacation
- - i'm going to gran canaria on [march 28](minDate) and i will need to book my vacation
- - i will travel between [may 15](minDate) to [june 8](maxDate)
+ - i'm flying to mallorca on january 16 so i need to book my vacation
+ - i'm going to gran canaria on march 28 and i will need to book my vacation
+ - i will travel between may 15 to june 8
+
 ## intent:inform_leaving_date
-  - i will leave the [5th](minDate)
-  - i travel on [saturday](minDate)
-  - we are leaving [feburary the 4th](minDate)
-  - we are going on [02/03/2020](minDate)
-  - i will fly [in two weeks](minDate) 
-  - i will leave [in 4 days](minDate)
-  - we leave [today](minDate)
-  - i am going the [23rd](minDate)
-  - i am leaving the [25th](minDate)
-  - i leave [tomorrow](minDate)
-  - i need to go on [saturday](minDate)
-  - i am leaving on [friday](minDate)
-  - i have to leave on [in three days](minDate)
-  - i leave on [satuday](minDate)
-  - leaving on [monday](minDate)
-  - i am going the [3rd march](minDate)
-  - i leave at [friday](minDate)
-  - i go on [1st february](minDate) 
+  - i will leave the 5th
+  - i travel on saturday
+  - we are leaving feburary the 4th
+  - we are going on 02/03/2020
+  - i will fly in two weeks 
+  - i will leave in 4 days
+  - we leave today
+  - i am going the 23rd
+  - i am leaving the 25th
+  - i leave tomorrow
+  - i need to go on saturday
+  - i am leaving on friday
+  - i have to leave on in three days
+  - i leave on satuday
+  - leaving on monday
+  - i am going the 3rd march
+  - i leave at friday
+  - i go on 1st february 
 
 ## intent:inform_return_date
-  - i will be back the [6th](maxDate)
-  - will be back on [thursday](maxDate)
-  - i will be back on [christmas](maxDate)
-  - i will get back to work on [monday](maxDate)
-  - i am back on [wensday](maxDate)
-  - i will be back on [4th of july](maxDate)
-  - will return in [a month](maxDate)
-  - i will return on [christmas](maxDate)
+  - i will be back the 6th
+  - will be back on thursday
+  - i will be back on christmas
+  - i will get back to work on monday
+  - i am back on wensday
+  - i will be back on 4th of july
+  - will return in a month
+  - i will return on christmas
+  - i will be back tomrrow
 
 
 
