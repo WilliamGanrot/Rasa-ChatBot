@@ -294,11 +294,11 @@ class ActionForgotPassword(FormAction):
 
     
     def slot_mappings(self) -> Dict[Text, Union[Dict, List [Dict]]]:
-        return {
-            "host_email": [
-                self.from_entity(entity="email")
-            ]
-        }
+       return {
+           "host_email": [
+               self.from_entity(entity="email")
+           ]
+       }
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 

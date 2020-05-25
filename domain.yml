@@ -134,7 +134,7 @@ templates:
   utter_give_website:
   - text: "More information can be found on our website at https://somecompanyname.com"
   utter_give_job_page:
-  - text: "Job opportunities, careers and more can be found on our website at https://somecompanyname.com/jobs"
+  - text: "Job opportunities, careers and more can be found on our website at\nhttps://somecompanyname.com/jobs"
 
 actions:
 - utter_greet
