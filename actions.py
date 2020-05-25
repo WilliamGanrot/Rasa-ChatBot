@@ -61,7 +61,7 @@ class ActionRequestVacation(FormAction):
     def validate_minDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
         print("validate_minDate")
         print(tracker.get_slot("time"))
-        
+        """        
         if tracker.latest_message['intent'].get('name') == "inform_return_date":
             if type(tracker.get_slot("time")) is dict:
                 return { 'maxDate': tracker.get_slot("time")['to'] }
@@ -71,16 +71,17 @@ class ActionRequestVacation(FormAction):
                 return { 'maxDate': tracker.get_slot("time") } 
 
         else:
-            
-            if type(tracker.get_slot("time")) is dict:
-                return { 'minDate': tracker.get_slot("time")['from'] }
-            else:
-                return { 'minDate': tracker.get_slot("time") }
+        """  
+        if type(tracker.get_slot("time")) is dict:
+            return { 'minDate': tracker.get_slot("time")['from'] }
+        else:
+            return { 'minDate': tracker.get_slot("time") }
 
     def validate_maxDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
         print("validate_maxDate")
         print(tracker.get_slot("time"))
         
+        """
         if tracker.latest_message['intent'].get('name') == "inform_leaving_date":
             
             if type(tracker.get_slot("time")) is dict:
@@ -93,15 +94,11 @@ class ActionRequestVacation(FormAction):
                     return { 'minDate': tracker.get_slot("time")}
         else:
         
-            if type(tracker.get_slot("time")) is dict:
-                return { 'maxDate': tracker.get_slot("time")['to'] }
-            else:
-                return { 'maxDate': tracker.get_slot("time")}
-
-
-    def validate_time(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-        print("validate_time")
-        return {}
+        """
+        if type(tracker.get_slot("time")) is dict:
+            return { 'maxDate': tracker.get_slot("time")['to'] }
+        else:
+            return { 'maxDate': tracker.get_slot("time")}
 
 
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
