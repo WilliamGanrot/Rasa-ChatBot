@@ -7,7 +7,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 from rasa_sdk.events import SlotSet
 from difflib import SequenceMatcher
-
+import webbrowser
 
 from datetime import datetime, timedelta, timezone
 from dateutil.parser import parse
@@ -36,8 +36,8 @@ class ActionRequestDirections(FormAction):
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
+        
         """A list of required slots that the form has to fill"""
-
         return ["to_location", "from_location", "travel_mode"]
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
@@ -47,83 +47,85 @@ class ActionRequestDirections(FormAction):
 
 
 
-"""
-VACATION
-"""
+"""Action form for booking a meeting"""
 class ActionRequestVacation(FormAction):
-    """Example of a custom form action"""
 
+    """Defining the name of the form"""
     def name(self) -> Text:
         return "vacation_form"
     
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
-
         return ["minDate", "maxDate"]
-
+        
     def validate_minDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-
+        print("validate_minDate")
+        print(tracker.get_slot("time"))
+        
         if tracker.latest_message['intent'].get('name') == "inform_return_date":
             if type(tracker.get_slot("time")) is dict:
-                #SlotSet("maxDate", tracker.get_slot("time")['to'])
                 return { 'maxDate': tracker.get_slot("time")['to'] }
             else:
-                #SlotSet("maxDate", tracker.get_slot("time"))
                 if tracker.get_slot("minTime") == tracker.get_slot("maxTime"):
                     return { 'maxDate': tracker.get_slot("time"), "minDate":None } 
                 return { 'maxDate': tracker.get_slot("time") } 
 
         else:
+            
             if type(tracker.get_slot("time")) is dict:
-                #SlotSet("minDate", tracker.get_slot("time")['from'])
                 return { 'minDate': tracker.get_slot("time")['from'] }
             else:
-                #SlotSet("minDate", tracker.get_slot("time"))
                 return { 'minDate': tracker.get_slot("time") }
 
     def validate_maxDate(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
-
+        print("validate_maxDate")
+        print(tracker.get_slot("time"))
+        
         if tracker.latest_message['intent'].get('name') == "inform_leaving_date":
+            
             if type(tracker.get_slot("time")) is dict:
-                #SlotSet("minDate", tracker.get_slot("time")['from'])
                 return { 'minDate': tracker.get_slot("time")['from'] }
+            
             else:
-                #SlotSet("minDate", tracker.get_slot("time"))
-                
-                
                 if tracker.get_slot("minTime") == tracker.get_slot("maxTime"):
                     return { 'minDate': tracker.get_slot("time"), "maxDate":None}
                 else:
                     return { 'minDate': tracker.get_slot("time")}
         else:
+        
             if type(tracker.get_slot("time")) is dict:
-                #SlotSet("maxDate", tracker.get_slot("time")['to'])
                 return { 'maxDate': tracker.get_slot("time")['to'] }
             else:
-                #SlotSet("maxDate", tracker.get_slot("time"))
-                
-
                 return { 'maxDate': tracker.get_slot("time")}
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
 
+
+    def validate_time(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Optional[Text]:
+        print("validate_time")
+        return {}
+
+
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+        print("in slot_mappings")
         return {
             "minDate": [self.from_entity(entity="time")],
-            "maxDate": [self.from_entity(entity="time")]
+            "maxDate": [self.from_entity(entity="time")],
+            "time": [self.from_entity(entity="time")]
         }
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 
-        print(tracker.get_slot("time"))
         dispatcher.utter_message()
         return []
 
-class ActionHelloWorld(Action):
 
+"""Action to confirm that the requested vacation does not conflict with any not allowed dates"""
+class ActionHelloWorld(Action):
     def name(self) -> Text:
         return "check_if_valid_dates"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        """Extract and parse the dates from the slots minDate and maxDate"""
         minDate = tracker.get_slot("minDate")
         maxDate = tracker.get_slot("maxDate")
         
@@ -131,77 +133,50 @@ class ActionHelloWorld(Action):
         parsedMaxDate = parse(maxDate)
 
         vaild_date_range = False
+        """Temporary list of not allowed vacation dates"""
         not_allowed_dates = [datetime(2020, 2, 12, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600))),
                              datetime(2020, 7, 23, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600))),
                              datetime(2020, 3, 9, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600))),
                              datetime(2020, 2, 17, 0, 0 ,tzinfo=timezone(timedelta(days=0, seconds=3600)))]
 
 
+        """Calculate all the dates between minDate and maxDate"""
         delta = parsedMaxDate-parsedMinDate
-
-        #between_dates = [parsedMinDate + timedelta(days=i) for i in range(delta.days + 1)]
         between_dates = [parsedMinDate + timedelta(days=i) for i in range(delta.days + 1)]
 
-        #if not any conficts in the date lists
+        """if not any conficts in the date lists allow vacation"""
         if not any(x in not_allowed_dates for x in between_dates):
             vaild_date_range = True
 
         return [SlotSet("is_valid_dates", vaild_date_range)]
     
 
-
+"""Action create link to set up meeting"""
 class ActionHelloWorld2(Action):
 
+    """Defining the name of the Action"""
     def name(self) -> Text:
         return "book_in_calender"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        SCOPES = ['https://www.googleapis.com/auth/calendar']
-        creds = None
-        if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
-                creds = pickle.load(token)
-        # If there are no (valid) credentials available, let the user log in.
-        if not creds or not creds.valid:
-            if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
-            else:
-                flow = InstalledAppFlow.from_client_secrets_file('client_id.json', SCOPES)
-                creds = flow.run_local_server(port=0)
-            # Save the credentials for the next run
-            with open('token.pickle', 'wb') as token:
-                pickle.dump(creds, token)
-        service = build('calendar', 'v3', credentials=creds, cache_discovery=False)
-
+        
+        """Extract the dates which we want vacation between"""
         minDate = tracker.get_slot("minDate")
         maxDate = tracker.get_slot("maxDate")
 
-        event = {
-        'summary': 'Summary',
-        'location': 'Karlstad',
-        'description': 'A test event.',
-        'start': {
-            'dateTime': minDate,
-        },
-        'end': {
-            'dateTime': maxDate,
-        }}
-
-        result = service.events().insert(calendarId='primary', body=event).execute()
-        print('Event created: %s' % (result.get('htmlLink')))
-
-        dispatcher.utter_message("Okay, I have booked it in you calender, view it here: " + (result.get('htmlLink')))
+        url = "http://ganrot.pythonanywhere.com/test?minDate="+minDate+"&maxDate="+maxDate
+        
+        dispatcher.utter_message("Okay, go ahead and press this link and I will set it up for you!")
+        dispatcher.utter_message(url)
+    
         return []
 
 
-
-
-"""
-MEETING
-"""
+"""Action form for booking meeting"""
 class RequestMeeting(FormAction):
     """Example of a custom form action"""
 
+    """Defining the name of the form"""
     def name(self) -> Text:
         return "meeting_form"
 
@@ -211,24 +186,35 @@ class RequestMeeting(FormAction):
 
         return ["meeting_date", "inviteemail", "invite_more_bool"]
     
+    """Once one or more emails has been extracted by duckling put them in a global email-list"""
     def validate_inviteemail(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Dict[Text, Any]:
 
         new_email_list = ""
 
-        if type(value) == list:
-            
+        """
+        If more than one email was extracted by duckling, loop through them and append them to new_email_list,
+        else only one email was extracted and add it to new_email_list
+        """
+        if type(value) == list:    
             for e in value:
                 new_email_list = new_email_list + e + ","
-
+              
         else:
             new_email_list = value + ","
 
+        """Add the new_email_list to the global slot emaillist"""
         if tracker.get_slot("emaillist") == None:
             return {"emaillist": new_email_list}
             
         else:
             return {"emaillist": tracker.get_slot("emaillist") + new_email_list}
 
+
+    """
+    Check if the user want to add more emails to the emaillist,
+    If the user want to add more emails, reset the slot inviteemail
+    which means that the bot will ask for more email adresses.
+    """
 
     def validate_invite_more_bool(self,value: Text,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> Dict[Text, Any]:
 
@@ -249,7 +235,7 @@ class RequestMeeting(FormAction):
             else:
                 return {"invite_more_bool": value}
 
-
+    """Define what will fill the form slots"""
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
 
         return {
@@ -270,16 +256,21 @@ class RequestMeeting(FormAction):
             ]
         }
         
-
+    """
+    Once the form is filled prepare a post request to our flask server,
+    the server will then generate invitation-links and send to all the users
+    """
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 
         url = "http://ganrot.pythonanywhere.com/createmeeting"
         
+        """Extract all the emails from the slot emaillist and put them in the new list emails"""
         emails = tracker.get_slot("emaillist").split(',')
         for email in emails:
             if not email:
                 emails.remove(email)
-        
+
+        """Set up payload for post request to flask server"""
         payload = {
             'meetingDate': str(parse(tracker.get_slot("meeting_date")).date()),
             'email' : emails
@@ -288,11 +279,14 @@ class RequestMeeting(FormAction):
         pp = pprint.PrettyPrinter(indent=4)
         pp.pprint(payload)
 
+        """Make post request"""
         request = Request(url, urlencode(payload).encode())
         json = urlopen(request).read().decode()
 
         dispatcher.utter_message(template="utter_submit")
         return []
+
+
 
 class ActionForgotPassword(FormAction):
     def name(self) -> Text:
