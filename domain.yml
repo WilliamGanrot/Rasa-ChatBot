@@ -30,6 +30,7 @@ intents:
 - ask_job
 - inform_email
 - affirm_add_more
+- request_meeting_provide_attedning
 entities:
 - from_location
 - to_location
@@ -77,6 +78,8 @@ slots:
     type: text
   meeting_date:
     type: unfeaturized
+  host_email:
+    type: unfeaturized
   
   attending:
     type: list
@@ -123,7 +126,8 @@ templates:
   - text: Do you wish to add anyone else to the meeting?
   utter_ask_inviteemail:
   - "What are the emails of the persons you would like to invite?"
-
+  utter_ask_host_email:
+  - "Okay, What is your email adress?"
   utter_ask_meeting_date:
   - text: When?
   utter_date_value:
