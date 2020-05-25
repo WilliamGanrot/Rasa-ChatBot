@@ -6,7 +6,6 @@ intents:
     use_entities: []
 - request_vacation:
     use_entities: []
-
 - request_meeting:
     use_entities: []
 
@@ -38,15 +37,11 @@ entities:
 - minDate
 - maxDate
 - is_valid_dates
-- form_location
 - from_directions
-- to_loction
-
 - inviteemail
 - meeting_date
 - invite_more_bool
 - emaillist
-
 
 slots:
   from_location:
@@ -125,9 +120,9 @@ templates:
   utter_ask_invite_more_bool:
   - text: Do you wish to add anyone else to the meeting?
   utter_ask_inviteemail:
-  - "What are the emails of the persons you would like to invite?"
+  - text: "What are the emails of the persons you would like to invite?"
   utter_ask_host_email:
-  - "Okay, What is your email adress?"
+  - text: "Okay, What is your email adress?"
   utter_ask_meeting_date:
   - text: When?
   utter_date_value:
@@ -165,8 +160,8 @@ actions:
 - format_date
 - utter_give_website
 - utter_give_job_page
-forms:
 
+forms:
 - directions_form
 - vacation_form
 - meeting_form

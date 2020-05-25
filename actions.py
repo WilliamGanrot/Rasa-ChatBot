@@ -109,7 +109,6 @@ class ActionRequestVacation(FormAction):
         return {
             "minDate": [self.from_entity(entity="time")],
             "maxDate": [self.from_entity(entity="time")],
-            "time": [self.from_entity(entity="time")]
         }
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
@@ -297,18 +296,12 @@ class ActionForgotPassword(FormAction):
         return ["host_email"]
 
     
-    def validate(self, dispatcher, tracker, domain):
-        slot_values = self.extract_other_slots(dispatcher, tracker, domain)
-        slot_to_fill = tracker.get_slot("requested_slot")
-
-        
-        if slot_to_fill == "host_email":
-            
-            slot_values.update({'host_email': tracker.get_slot("email")})
-            slot_values.update({'email': None})
-        
-
-        return self.validate_slots(slot_values, dispatcher, tracker, domain)
+   def slot_mappings(self) -> Dict[Text, Union[Dict, List [Dict]]]:
+       return {
+           "host_email": [
+               self.from_entity(entity="email")
+           ]
+       }
 
     def submit(self,dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any],) -> List[Dict]:
 
